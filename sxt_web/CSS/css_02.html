@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>定位属性</title>
+	<style type="text/css">
+		#container1 {position:absolute; top:100px}
+		#container2 {visibility:hidden; position:absolute; top:100px}
+		p {font-size:12px}
+    </style>
+    <meta http-equiv="pragna" content="no-cache">
+
+</head>
+
+<body>
+	<p style="font-size:15pt color:#cc33cc; font－family:simsun">请选择一幅图片：</p>
+    <div id="container1">
+    	<img height=200 src="images/1.jpg" width=185 />
+        <p style="font-size:16px; color:#303; font-family:Georgia, 'Times New Roman', Times, serif">名称：1</p>
+    </div>
+    <div id="container2">
+    	<img height=200 src="images/2.jpg" width=185 />
+        <p style="font-size:16px; color:#303; font-family:Georgia, 'Times New Roman', Times, serif">名称：2</p>
+    </div> 
+    
+    <form Name="myform">
+  <p> 
+      <input type = "button" value = "desert"  
+      Onclick = "container1.style.visibility = 'visible';  
+      container2.style.visibility = 'hidden' "/> 
+      
+      <input type = "button" value = "sea"  
+      container1.style.visibility = 'hidden'
+      Onclick = "container2.style.visibility = 'visible';  
+      container1.style.visibility = 'hidden'"/>
+   </p>  
+ 
+   
+  
+  </ Form>   
+   
+</body>
+</html>

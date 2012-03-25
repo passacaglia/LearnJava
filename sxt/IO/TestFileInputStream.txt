@@ -1,0 +1,30 @@
+import java.io.*;
+
+public class TestFileInputStream {
+	public static void main(String[] args) {
+		int b;
+		FileInputStream fin = null;
+		
+		try {
+			fin = new FileInputStream("./TestFileInputStream.txt");
+		} catch (FileNotFoundException fte) {
+			System.out.println("File not found!!");
+			fte.printStackTrace();
+			System.exit(-1);
+		}
+		
+		try {
+			long num = 0;
+			b = fin.read();
+			
+			while(b != 0) {
+				System.out.print((char)b);
+			}
+			
+			fin.close();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+		
+	}
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="pragna" content="no-cache"></meta>
+<script type="text/javascript" src="scripts/calendar.js"></script>
+<title>content</title>
+<style type="text/css" >
+	body {
+		font-family:Arial, Helvetica, sans-serif;
+		text-align:center;
+	}
+	
+	.page {
+		margin-left:auto;
+		margin-right:auto;
+		text-align:left;
+		font-size:12px;
+		background:#ffffff;
+		border-style:solid;
+		border-width:1px;
+		border-color:#666666;
+		
+	}
+	
+	.header {
+		text-align:center;
+		background-color:#f3f3f3;
+		padding:3px;
+	}
+	
+		
+	.nav {
+		float:left;
+		width:20%;
+		font-weight:bold;
+		background-color:#e3e3e3;
+		padding:5px;
+	}
+	
+	.content {
+		float:right;
+		background-color:white;
+		width:79%;
+	}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+	<div class="header">
+    	<p>My Page</p>
+        <br />
+        <img width="100%" src="images/head.jpg" alt="head.jpg"/>
+    </div>
+
+	<!-- NAVIGATION GOES HERE -->
+	<div class="nav">
+    	<input type="text" value="Click to see the calendar" onclick="SelectDate(this, 'yyyy-MM-dd')">
+		<p><a href="introduction.html" target="contentPanel">Introduction</a></p>
+		<p><a href="beFriend_new.html" target="contentPanel">Be My Friend ?</a></p>
+    </div>
+    
+    <!-- CONTENT GOES HERE -->
+    <div class="content">
+    	<iframe name="contentPanel"  src="introduction.html" width=70% height=500 ></iframe>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

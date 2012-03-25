@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="pragna" content="no-cache"></meta>
+<title>beFriend</title>
+<style type="text/css">
+
+#table_head {
+	text-align: center;
+}
+
+#guide {
+	text-align: center;
+}
+</style>
+<script src="scripts/regcheckdata.js"></script>
+
+</head>
+
+<body>
+be friend?
+
+		<form name="form"method="post" action="friend.html" onsubmit="return checkdata()">
+			<table width="85%" border="1" align="center" id="bf_table">
+  <tr id="table_head">
+    <td colspan="2" id="table_head">用户注册</td>
+    </tr>
+  <tr>
+    <td width="30%" id="guide">用户名</td>
+    <td width="68%"><input type="text" name="username" id="textfield" /></td>
+  </tr>
+  <tr>
+    <td id="guide">密码</td>
+    <td><input type="password" name="pwd" id="textfield2" /></td>
+  </tr>
+  <tr>
+    <td id="guide">确认密码</td>
+    <td><input type="password" name="pwdconfirm" id="textfield3" /></td>
+  </tr>
+  <tr>
+    <td id="guide">性别</td>
+    <td><input type="radio" name="sex" id="radio" value="male" />
+      男
+      <input type="radio" name="sex" id="radio2" value="female" />
+      女</td>
+  </tr>
+  <tr>
+    <td id="guide">兴趣</td>
+    <td><p>
+      <label>
+        <input type="checkbox" name="兴趣" value="music" id="兴趣_0" />
+        音乐</label>
+      <br />
+      <label>
+        <input type="checkbox" name="兴趣" value="movie" id="兴趣_1" />
+        电影</label>
+      <br />
+      <label>
+        <input type="checkbox" name="兴趣" value="sport" id="兴趣_2" />
+        运动</label>
+      <br />
+    </p></td>
+  </tr>
+  <tr>
+    <td id="guide">技术</td>
+    <td><select name="place" size="3" multiple="multiple" id="select">
+      <option value="C/C++">C/C++</option>
+      <option value="C#">C#</option>
+      <option value="Java">Java</option>
+      <option value="Python">Python</option>
+      <option value="Ruby">Ruby</option>
+    </select></td>
+  </tr>
+  <tr>
+    <td id="guide">来自哪里</td>
+    <td><select name="theplace">
+      <option value="0">Place</option>
+      <option value="earth">地球</option>
+      <option value="mars">火星</option>
+    </select></td>
+  </tr>
+  <tr>
+    <td id="guide">自我介绍</td>
+    <td><textarea name="intro" id="textarea" cols="45" rows="5"></textarea></td>
+  </tr>
+  <tr>
+    <td id="guide">&nbsp;</td>
+    <td><input type="submit" name="button" id="button" value="提交" />
+      <input type="reset" name="button2" id="button2" value="重置" /></td>
+  </tr>
+</table>
+
+</form>
+
+</body>
+</html>

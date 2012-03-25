@@ -1,0 +1,1 @@
+alert("从外部引入JavaScript!");

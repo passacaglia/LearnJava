@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="pragna" content="no-cache" />
+<title>relative</title>
+<link rel="stylesheet" type="text/css" href="relative__calendar.css" />
+<script src="calendar.js" ></script>
+</head>
+
+<body onload="changeDrop2()">
+	<script language="javascript">
+		function changeDrop2() {
+			if (0 == document.form.Drop1.selectedIndex) {
+				document.form.Drop2.length = 1;
+				document.form.Drop1.selectedIndex = 0;
+				document.form.Drop2.selectedIndex = 0;
+				
+				document.form.Drop2.options[0].text = "No Product Selected";
+				document.form.Drop2.options[0].value = "No Product Selected";
+			}
+			
+			if (1 == document.form.Drop1.selectedIndex) {
+				document.form.Drop2.length = 9;
+				document.form.Drop2.selectedIndex = 0;
+				document.form.Drop2.options[0].text = "Select Model";
+				document.form.Drop2.options[0].value = "Select Model";
+				document.form.Drop2.options[1].text = "Celebrity";
+				document.form.Drop2.options[1].value = "Celebrity";
+				document.form.Drop2.options[2].text = "Legend";
+				document.form.Drop2.options[2].value = "Legend";
+				document.form.Drop2.options[3].text = "Sundancer";
+				document.form.Drop2.options[3].value = "Sundancer";
+				document.form.Drop2.options[4].text = "SideKick";
+				document.form.Drop2.options[4].value = "SideKick";
+				document.form.Drop2.options[5].text = "Rally";
+				document.form.Drop2.options[5].value = "Rally";
+				document.form.Drop2.options[6].text = "Shuttle";
+				document.form.Drop2.options[6].value = "Shuttle";
+				document.form.Drop2.options[7].text = "Dynamo";
+				document.form.Drop2.options[7].value = "Dynamo";
+				document.form.Drop2.options[8].text = "XL";
+				document.form.Drop2.options[8].value = "XL";
+			}
+			
+			if (document.form.Drop1.selectedIndex == 2) {
+				document.form.Drop2.length = 8;
+				document.form.Drop2.selectedIndex = 0
+				document.form.Drop2.options[0].text = "Select model";
+				document.form.Drop2.options[0].value = "Select Model";
+				document.form.Drop2.options[1].text = "1100";
+				document.form.Drop2.options[1].value = "1100";
+				document.form.Drop2.options[2].text = "1103";
+				document.form.Drop2.options[2].value = "1103";
+				document.form.Drop2.options[3].text = "1105";
+				document.form.Drop2.options[3].value = "1105";
+				document.form.Drop2.options[4].text = "1115";
+				document.form.Drop2.options[4].value = "1115";
+				document.form.Drop2.options[5].text = "1120";
+				document.form.Drop2.options[5].value = "1120";
+				document.form.Drop2.options[6].text = "1170";
+				document.form.Drop2.options[6].value = "1170";
+				document.form.Drop2.options[7].text = "1400";
+				document.form.Drop2.options[7].value = "1400";
+				}
+			if (document.form.Drop1.selectedIndex == 3) {
+				document.form.Drop2.length = 12;
+				document.form.Drop2.selectedIndex = 0
+				document.form.Drop2.options[0].text = "Select Model";
+				document.form.Drop2.options[0].value = "Select Model";
+				document.form.Drop2.options[1].text = "TMR48";
+				document.form.Drop2.options[1].value = "TMR48";
+				document.form.Drop2.options[2].text = "TMR49";
+				document.form.Drop2.options[2].value = "TMR49";
+				document.form.Drop2.options[3].text = "TMR348";
+				document.form.Drop2.options[3].value = "TMR348";
+				document.form.Drop2.options[4].text = "TMR329";
+				document.form.Drop2.options[4].value = "TMR329";
+				document.form.Drop2.options[5].text = "TMR540";
+				document.form.Drop2.options[5].value = "TMR540";
+				document.form.Drop2.options[6].text = "TMR360";
+				document.form.Drop2.options[6].value = "TMR360";
+				document.form.Drop2.options[7].text = "TMR470";
+				document.form.Drop2.options[7].value = "TMR470";
+				document.form.Drop2.options[8].text = "TMR570/571";
+				document.form.Drop2.options[8].value = "TMR570/571";
+				document.form.Drop2.options[9].text = "TMR580";
+				document.form.Drop2.options[9].value = "TMR580";
+				document.form.Drop2.options[10].text = "TMR670";
+				document.form.Drop2.options[10].value = "TMR670";
+				document.form.Drop2.options[11].text = "TMR560";
+				document.form.Drop2.options[11].value = "TMR560";
+				}
+			if (document.form.Drop1.selectedIndex == 4) {
+				document.form.Drop2.length = 3;
+				document.form.Drop2.selectedIndex = 0
+				document.form.Drop2.options[0].text = "Select Model";
+				document.form.Drop2.options[0].value = "Select Model";
+				document.form.Drop2.options[1].text = "Wrangler";
+				document.form.Drop2.options[1].value = "Wrangler";
+				document.form.Drop2.options[2].text = "Hurricane";
+				document.form.Drop2.options[2].value = "Hurricane";
+				}
+			if (document.form.Drop1.selectedIndex == 5) {
+				document.form.Drop2.length = 3;
+				document.form.Drop2.selectedIndex = 0
+				document.form.Drop2.options[0].text = "Select Model";
+				document.form.Drop2.options[0].value = "Select Model";
+				document.form.Drop2.options[1].text = "2000";
+				document.form.Drop2.options[1].value = "2000";
+				document.form.Drop2.options[2].text = "3000";
+				document.form.Drop2.options[2].value = "3000";
+				}
+
+		}
+		
+		function goThere() {
+			if (0 == document.form.Drop1.selectedIndex) {
+				alert ("Please Select a Product");
+			} else {
+				if (0 == document.form.Drop2.selectedIndex) {
+					alert ("Please Select a Model");
+				} else {
+					var list1 = document.form.Drop1;
+					var list2 = document.form.Drop2;
+					var theDIR = list1.options[list1.selectedIndex].value;
+					var theProduct = document.form.Drop2.options[list2.selectedIndex].value;
+					location.href = "http://www.baidu.com/s?wd=" + theDIR + " + " + theProduct;
+				}
+			}
+			
+		}
+	</script>
+    
+    <div name="form">
+        <form name="form">
+            <p><select name="Drop1" onchange="changeDrop2()" size="1">
+                <option selected value="Select A Product">Select A Product</option>
+                <option value="Scooters" > Scooters</option>
+                <option value="Jazzy">Jazzy</option>
+                <option value="LiftChairs">LiftChairs</option>
+                <option value="PMVs">PMV's</option>
+                <option value="Hercules">Hercules</option>
+              </select><br />
+              
+              <select name="Drop2" size="1">
+                    <option value="a">a</option>
+                    <option value="b">b</option>
+                    <option value="c">c</option>
+                    <option value="d">d</option>
+                    <option value="e">e</option>
+                    <option value="f">f</option>
+                    <option value="g">g</option>
+                    <option value="h">h</option>
+                    <option value="i">i</option>
+             </select><br />
+             
+             <input type="button" onclick="goThere()" value="Go to Product Page" name="B1" /><p>
+        </p>
+        </form>
+    </div>
+    
+    <div name="calendar">
+    	<TABLE 
+style="BORDER-RIGHT: #a0a0a0 1px solid; BORDER-TOP: #a0a0a0 1px solid; BORDER-LEFT: #a0a0a0 1px solid; BORDER-BOTTOM: #a0a0a0 1px solid" 
+cellSpacing=0 cellPadding=3 width="100%" border=0>
+  <TBODY>
+  <TR bgColor=#0080c0>
+    <TD class=ListTitle align=middle colSpan=3>梅花雨日历控件</TD></TR>
+  <TR bgColor=#d0e4f9 height=20>
+    <TD align=middle colSpan=3>&nbsp;</TD></TR>
+  <TR height=20>
+    <TD align=middle colSpan=3>&nbsp;</TD></TR>
+  <TR bgColor=#ffffff>
+    <TD width="5%">&nbsp;</TD>
+    <TD align=left width="60%"><INPUT onfocus=setday(this)>&nbsp;&nbsp;一般焦点用法 
+      <P><INPUT name=txt>&nbsp;&nbsp;<INPUT onclick=setday(this,document.all.txt) type=button value=按钮用法> 
+
+      <P><INPUT onfocus=setday(this) readOnly>&nbsp;&nbsp;不能输入，只能选择 </P></TD>
+    <TD></TD></TR>
+  <TR height=20>
+    <TD align=middle colSpan=3>&nbsp;</TD></TR>
+  <TR bgColor=#d0e4f9 height=20>
+    <TD align=middle colSpan=3>&nbsp;</TD></TR></TBODY></TABLE>
+    </div>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

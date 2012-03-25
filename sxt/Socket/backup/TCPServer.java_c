@@ -1,0 +1,18 @@
+import java.net.*;
+import java.io.*;
+
+public class TCPServer {
+	public static void main(String[] args) throws Exception {
+		ServerSocket ss = new ServerSocket(6666);
+		while(true) {
+			Socket serS = ss.accept();
+			System.out.println("A client connected.");
+			
+			DataInputStream dis = new DataInputStream(serS.getInputStream());
+			System.out.println(dis.readUTF());
+			
+			dis.close();
+			serS.close();
+		}
+	}
+}

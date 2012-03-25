@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+
+<script language="JavaScript">
+	function setDiv() {
+		document.getElementById("operator").innerHTML = "<font color=\"red\"> / </font>";
+	}
+	function setMul() {
+		document.getElementById("operator").innerHTML = "<font color='red'> * </font>";
+	}
+</script>
+				
+</head>
+<body>
+	<center>
+	<h4>Please choose and input</h4>
+		<form name="form" method="post" action="compute.jsp">
+		
+			<input type="radio" name="compute" value="divide" onclick="setDiv()" />Divide
+			<input type="radio" name="compute" value="multiply" onclick="setMul()" />Multiply
+				
+			<br />
+			<input type="text" name="number1" />
+			<div id="operator"><i><font color="red">Please choose the operator</font></i></div>
+			
+			<input type="text" name="number2" />
+			<br />
+			<br />
+			<input type="submit" />
+		</form>
+	</center>
+</body>
+</html>
