@@ -19,7 +19,7 @@ private void tree(Connection conn, int id, int level) {
 		while (rs.next()) {
 			str += "<tr><td>" + rs.getInt("id") + "</td><td>" + 
 				   preStr + 
-				   "<a href='ShowArticleCont.jsp'>" + rs.getString("title") + "</a>" + 
+				   "<a href='ShowArticleCont.jsp?id=" + rs.getInt("id") + "'>" + rs.getString("cont") + "</a>" + 
 				   "</td></tr>";
 			if (rs.getInt("isleaf") != 0) {
 				tree(conn, rs.getInt("id"), level+1);
