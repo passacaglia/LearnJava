@@ -6,7 +6,28 @@ request.setCharacterEncoding("utf8");
 int id = Integer.parseInt(request.getParameter("id"));
 int rootid = Integer.parseInt(request.getParameter("rootid"));
 String title = request.getParameter("title");
+
+if (title == null) {
+	out.println("error!");
+	return;
+}
+
+title = title.trim();
+if (title.equals("")) {
+	out.println("<font color=red>title can not be empty!</font>");
+	return;
+}
 String cont = request.getParameter("cont");
+if (cont == null) {
+	out.println("error!");
+	return;
+}
+
+cont = cont.trim();
+if (cont.equals("")) {
+	out.println("<font color=red>cont can not be empty!</font>");
+	return;
+}
 
 cont = cont.replaceAll("\n", "<br />");
 

@@ -61,7 +61,7 @@ while (rs.next()) {
 			<%=rs.getInt("id") %>
 		</td>
 		<td>
-			<%=rs.getString("title") %>
+			<a href="ShowArticleCont.jsp?id=<%=rs.getInt("id") %>"> <%=rs.getString("title") %> </a>
 		</td>	
 	</tr>
 <%
