@@ -11,15 +11,32 @@ int pageNo;
 if (null == strPageNo || strPageNo.equals("")) {
 	pageNo = 1;
 } else {
-	pageNo = Integer.parseInt(strPageNo.trim());
+	try {
+		pageNo = Integer.parseInt(strPageNo.trim());
+	} catch (NumberFormatException e) {
+		pageNo = 1;
+	}
+	if (pageNo <= 0) {
+		pageNo = 1;
+	}
+	
 }
 
-int startPos = (pageNo - 1) * pageSize;
 
 
 Class.forName("com.mysql.jdbc.Driver");
 String url = "jdbc:mysql://localhost/bbs?user=root&password=amigo";
 Connection conn = DriverManager.getConnection(url);
+
+Statement stmtCount = conn.createStatement();
+ResultSet rsCount = stmtCount.executeQuery("select count(*) from article where pid = 0");
+rsCount.next();
+int totalRecords = rsCount.getInt(1);
+
+int totalPages = totalRecords % pageSize == 0 ? totalRecords / pageSize : totalRecords / pageSize + 1;
+if (pageNo > totalPages) { pageNo = totalPages; }
+int startPos = (pageNo - 1) * pageSize;
+
 
 Statement stmt = conn.createStatement();
 ResultSet rs = stmt.executeQuery("select * from article where pid = 0 order by pdate desc limit " + startPos + ", " + pageSize);
@@ -54,6 +71,13 @@ stmt.close();
 conn.close();
 %>
 </table>
+共<%=totalPages %>页
+第<%=pageNo %>页
+<br />
+
+<a href="ShowArticleFlat.jsp?pageNo=<%=pageNo-1%>"> < </a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+<a href="ShowArticleFlat.jsp?pageNo=<%=pageNo+1%>"> > </a>
 </body>
 </html>
 
