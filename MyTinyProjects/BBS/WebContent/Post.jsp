@@ -36,7 +36,7 @@ if (null != s && s.equals("post")) {
 	prstmt.close();
 	conn.close();
 
-	response.sendRedirect("ShowArticleTree.jsp");
+	response.sendRedirect("ShowArticleFlat.jsp");
 }
 %>
 
