@@ -78,6 +78,25 @@ conn.close();
 <a href="ShowArticleFlat.jsp?pageNo=<%=pageNo-1%>"> < </a>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
 <a href="ShowArticleFlat.jsp?pageNo=<%=pageNo+1%>"> > </a>
+
+<!-- 不写action也成功了 -->
+<form name="form" action="ShowArticleFlat.jsp">
+	<select name="pageNo" onchange="document.form.submit()">
+		<%
+		for (int i=1; i<=totalPages; i++) {
+		%>
+			<option value="<%=i%>"  <%=(pageNo == i) ? "selected" : "" %>>第<%=i %>页
+		<%	
+		}
+		%>
+	</select>
+</form>
+
+<form name="formGo" action="ShowArticleFlat.jsp">
+	<input type="text" name="pageNo" size="3" value=<%=pageNo %> />
+	<input type="submit" value="go" />
+</form>
+
 </body>
 </html>
 
