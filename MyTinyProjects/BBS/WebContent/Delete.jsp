@@ -1,7 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
+
+<%
+String admin = (String)session.getAttribute("admin");
+if (null == admin || !admin.equals("true")) {
+	out.println("bad!");
+	return;
+}
+%>
+
 <%!
+boolean login = false;
 private void del(Connection conn, int id) {
 	Statement stmt = null;
 	ResultSet rs = null;
@@ -32,7 +42,6 @@ private void del(Connection conn, int id) {
 	}
 }
 %>
-
 
 <%
 int id = Integer.parseInt(request.getParameter("id"));

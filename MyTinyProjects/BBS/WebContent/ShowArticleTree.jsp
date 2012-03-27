@@ -3,8 +3,17 @@
     
 <%@ page import="java.sql.*" %>
 
+<%
+String admin = (String)session.getAttribute("admin");
+if (null !=admin && admin.equals("true")) {
+	login = true;
+}
+%>
+
 <%!
 String str = "";
+boolean login = false;
+String strLogin = "";
 private void tree(Connection conn, int id, int level) {
 	Statement stmt = null;
 	ResultSet rs = null;
@@ -17,14 +26,15 @@ private void tree(Connection conn, int id, int level) {
 		String sql = "select * from article where pid = " + id;
 		rs = stmt.executeQuery(sql);
 		while (rs.next()) {
+			if (login) {
+				strLogin = "<td>" + "<a href='Delete.jsp?id=" + rs.getInt("id") + "&pid=" + rs.getInt("pid") + "'>" +
+				           "删除" + "</a>" + "</td>";
+			}
 			str += "<tr><td>" + rs.getInt("id") + "</td><td>" + 
 				   preStr + 
 				   "<a href='ShowArticleCont.jsp?id=" + rs.getInt("id") + "'>" + 
 		   		   rs.getString("title") + "</a>" + 
-				   "</td><td>" + 
-		   		   "<a href='Delete.jsp?id=" + rs.getInt("id") + "&pid=" + rs.getInt("pid") + "'>" +
-				   "删除" + "</a>" +
-		   		   "</td></tr>";
+				   "</td>" + strLogin + "</tr>";
 			if (rs.getInt("isleaf") != 0) {
 				tree(conn, rs.getInt("id"), level+1);
 			}
@@ -56,13 +66,14 @@ Connection conn = DriverManager.getConnection(url);
 Statement stmt = conn.createStatement();
 ResultSet rs = stmt.executeQuery("select * from article where pid = 0");
 while (rs.next()) {
+	if (login) {
+		strLogin = "<td>" + "<a href='Delete.jsp?id=" + rs.getInt("id") + "&pid=" + rs.getInt("pid") + "'>" +
+		           "删除" + "</a>" + "</td>";
+	}
 	str += "<tr><td>" + rs.getInt("id") + "</td><td>" + 
 		   "<a href='ShowArticleCont.jsp?id=" + rs.getInt("id") + "'>" + 
-	   	   rs.getString("title") + "</a>" + 
-		   "</td><td>" + 
-	   	   "<a href='Delete.jsp?id=" + rs.getInt("id") + "&pid=" + rs.getInt("pid") + "'>" +
-		   "删除" + "</a>" + 
-		   "</td></tr>" ;
+   		   rs.getString("title") + "</a>" + 
+		   "</td>" + strLogin + "</tr>";
 	if (rs.getInt("isleaf") != 0) {
 		tree(conn, rs.getInt("id"), 1);
 	}
@@ -80,10 +91,15 @@ conn.close();
 </head>
 <body>
 <a href='Post.jsp'>发新帖</a>
+<a href="Login.jsp">登录</a>
 
 <table border=1>
 <%= str %>
-<% str = ""; %>
+<% str = ""; 
+login = false;
+strLogin = "";
+out.println(login);
+%>
 </table>
 </body>
 </html>

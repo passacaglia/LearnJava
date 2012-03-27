@@ -12,7 +12,7 @@ if (null != action && action.equals("login")) {
 		out.println(password);
 		//return;
 	} else {
-		out.println(uname+ "dd");
+		session.setAttribute("admin", "true");
 		response.sendRedirect("ShowArticleTree.jsp");
 	}
 }
