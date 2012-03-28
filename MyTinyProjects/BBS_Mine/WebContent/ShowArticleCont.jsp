@@ -28,5 +28,12 @@ if (rs.next()) {
 <table border="1">
 <%=str %>
 </table>
+<a href="Reply.jsp?id=<%=rs.getInt("id")%>&rootid=<%=rs.getInt("rootid") %>">Reply</a>
+
+<%
+rs.close();
+stmt.close();
+conn.close();
+%>
 </body>
 </html>
