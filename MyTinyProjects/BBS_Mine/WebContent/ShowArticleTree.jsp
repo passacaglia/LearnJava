@@ -16,7 +16,7 @@ private void tree(Connection conn, int id, int level) {
 		rs = stmt.executeQuery(sql);
 		while(rs.next()) {
 			str += "<tr><td>" + rs.getInt("id") + "</td>" + 
-				   "<td>" + preStr + rs.getString("title") + "</td></tr>";
+				   "<td>" + preStr + "<a href='ShowArticleCont.jsp?id=" + rs.getInt("id") + "'>" + rs.getString("title") + "</a>" + "</td></tr>";
 			if (rs.getInt("isleaf") != 0) {
 				tree(conn, rs.getInt("id"), level+1);
 			}
@@ -37,7 +37,7 @@ String sql = "select * from article where pid = 0";
 ResultSet rs = stmt.executeQuery(sql);
 while(rs.next()) {
 	str = "<tr><td>" + rs.getInt("id") + "</td>" + 
-		  "<td>" + rs.getString("title") + "</td></tr>";
+			"<td>" + "<a href='ShowArticleCont.jsp?id=" + rs.getInt("id") + "'>" + rs.getString("title") + "</a>" + "</td></tr>";
 		  
 	if (rs.getInt("isleaf") != 0) {
 		tree(conn, rs.getInt("id"), 1);
