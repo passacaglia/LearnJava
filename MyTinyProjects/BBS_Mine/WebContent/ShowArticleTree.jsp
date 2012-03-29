@@ -15,14 +15,29 @@ private void tree(Connection conn, int id, int level) {
 		String sql = "select * from article where pid = " + id;
 		rs = stmt.executeQuery(sql);
 		while(rs.next()) {
+			String del = "<td>" + "<a href='Delete.jsp?id=" + rs.getInt("id") + "&pid=" + rs.getInt("pid") + "'>删除" + "</a>" + "</td>";
 			str += "<tr><td>" + rs.getInt("id") + "</td>" + 
-				   "<td>" + preStr + "<a href='ShowArticleCont.jsp?id=" + rs.getInt("id") + "'>" + rs.getString("title") + "</a>" + "</td></tr>";
+				   "<td>" + preStr + "<a href='ShowArticleCont.jsp?id=" + rs.getInt("id") + "'>" + rs.getString("title") + "</a>" + "</td>" +
+				   del + "</tr>";
 			if (rs.getInt("isleaf") != 0) {
 				tree(conn, rs.getInt("id"), level+1);
 			}
 		}
 	} catch(SQLException e) {
 		e.printStackTrace();
+	} finally {
+		try {
+			if (rs != null) {
+				rs.close();
+				rs = null;
+			} 
+			if (stmt != null) {
+				stmt.close();
+				stmt = null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
 %>
@@ -36,9 +51,10 @@ Statement stmt = conn.createStatement();
 String sql = "select * from article where pid = 0";
 ResultSet rs = stmt.executeQuery(sql);
 while(rs.next()) {
-	str = "<tr><td>" + rs.getInt("id") + "</td>" + 
-			"<td>" + "<a href='ShowArticleCont.jsp?id=" + rs.getInt("id") + "'>" + rs.getString("title") + "</a>" + "</td></tr>";
-		  
+	String del = "<td>" + "<a href='Delete.jsp?id=" + rs.getInt("id") + "&pid=" + rs.getInt("pid") + "'>删除" + "</a>" + "</td>";
+	str += "<tr><td>" + rs.getInt("id") + "</td>" + 
+		   "<td><a href='ShowArticleCont.jsp?id=" + rs.getInt("id") + "'>" + rs.getString("title") + "</a>" + "</td>" +
+		   del + "</tr>";
 	if (rs.getInt("isleaf") != 0) {
 		tree(conn, rs.getInt("id"), 1);
 	}
@@ -57,6 +73,7 @@ conn.close();
 <body>
 <table border=1>
 <%=str %>
+<% str = ""; %>
 </table>
 </body>
 </html>
