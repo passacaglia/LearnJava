@@ -85,6 +85,7 @@ conn.close();
 <title>Show Article Tree</title>
 </head>
 <body>
+<a href="Post.jsp">新帖子</a>
 <table border=1>
 <%=str %>
 <% str = ""; 
