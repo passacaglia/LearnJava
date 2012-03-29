@@ -23,12 +23,14 @@ private void tree(Connection conn, int id, int level) {
 		String sql = "select * from article where pid = " + id;
 		rs = stmt.executeQuery(sql);
 		while(rs.next()) {
+			//del shows up only when you login.
 			if (login) {
 				del = "<td>" + "<a href='Delete.jsp?id=" + rs.getInt("id") + "&pid=" + rs.getInt("pid") + "'>删除" + "</a>" + "</td>";
 			}
 			str += "<tr><td>" + rs.getInt("id") + "</td>" + 
 				   "<td>" + preStr + "<a href='ShowArticleCont.jsp?id=" + rs.getInt("id") + "'>" + rs.getString("title") + "</a>" + "</td>" +
 				   del + "</tr>";
+			//如果不是叶子，递归。
 			if (rs.getInt("isleaf") != 0) {
 				tree(conn, rs.getInt("id"), level+1);
 			}
@@ -58,7 +60,7 @@ String url = "jdbc:mysql://localhost:3306/bbs";
 Connection conn = DriverManager.getConnection(url, "root", "amigo");
 
 Statement stmt = conn.createStatement();
-String sql = "select * from article where pid = 0";
+String sql = "select * from article where pid = 0";//pid = 0，所有的主题帖。
 ResultSet rs = stmt.executeQuery(sql);
 while(rs.next()) {
 	if (login) {

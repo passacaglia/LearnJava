@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%
+//Say sorry when you have not logged in.
 String admin = (String)session.getAttribute("admin");
 if (null != admin && admin.equals("true")) {
 	out.println("bad!");
@@ -19,6 +20,7 @@ private void del(Connection conn, int id) {
 		while(rs.next()) {
 			del(conn, rs.getInt("id"));
 		}
+		//把自己删了。
 		stmt.executeUpdate("delete from article where id = " + id);
 	} catch(SQLException e) {
 		e.printStackTrace();
@@ -52,12 +54,15 @@ del(conn, id);
 
 //把要删除的帖子的父贴的isleaf设为0(是叶子)，如果父贴没有其它子贴的话。
 Statement stmt = conn.createStatement();
-//数一下article里所有pid=?的记录有多少条。
+//数一下article里     所有pid=?的记录    有多少条。
 String sql = "select count(*) from article where pid = " + pid;
 ResultSet rs = stmt.executeQuery(sql);
-rs.next();
-int count = rs.getInt(1);
+rs.next();//这里，肯定有一条记录（被删的   父帖）。现在选择这条记录。
+int count = rs.getInt(1);//第一个字段。
 
+
+//count > 0 ， 还有孩子。
+//没有子帖了。就把  父帖  更新为  叶子。
 if (count <= 0) {
 	Statement stmtUpdate = conn.createStatement();
 	stmtUpdate.executeUpdate("update article set isleaf = 0 where id = " + pid);

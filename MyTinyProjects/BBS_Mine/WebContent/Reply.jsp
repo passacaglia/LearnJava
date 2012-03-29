@@ -14,6 +14,7 @@ String rootid = request.getParameter("rootid");
 
 
 	<form action="ReplyOK.jsp" method="post">
+		<!-- 用隐藏域来传递id & rootid -->
 		<input name="id" type="hidden" value=<%=id %> />
 		<input name="rootid" type="hidden" value=<%=rootid %> />
 			<table>

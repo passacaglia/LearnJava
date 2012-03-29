@@ -6,13 +6,14 @@ if (null != action && action.equals("action")) {
 	String username = request.getParameter("username");
 	if (username == null && !username.equals("admin")) {
 		out.println("<font color='red'>username or password error!</font>");
-		return;
+		return;//后面的内容不显示。
 	}
 	String password = request.getParameter("password");
 	if (password == null && !password.equals("admin")) {
 		out.println("<font color='red'>username or password error!</font>");
 		return;
 	}
+	//ShowArticleTree  &  Delete 里检测用。
 	session.setAttribute("admin", "true");
 	response.sendRedirect("ShowArticleTree.jsp");
 }
