@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*" %>    
+<%@ page import="java.sql.*" %>
+<%
+String admin = (String)session.getAttribute("admin");
+if (null != admin && admin.equals("true")) {
+	out.println("bad!");
+	return;
+}
+%>    
 <%!
 private void del(Connection conn, int id) {
 	Statement stmt = null;
@@ -45,6 +52,7 @@ del(conn, id);
 
 //把要删除的帖子的父贴的isleaf设为0(是叶子)，如果父贴没有其它子贴的话。
 Statement stmt = conn.createStatement();
+//数一下article里所有pid=?的记录有多少条。
 String sql = "select count(*) from article where pid = " + pid;
 ResultSet rs = stmt.executeQuery(sql);
 rs.next();

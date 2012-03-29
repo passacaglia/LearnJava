@@ -1,8 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
+<%
+String admin = (String)session.getAttribute("admin");
+if (null != admin && admin.equals("true")) {
+	login = true;
+}
+%>
 <%!
 String str = "";
+boolean login = false;
+String del = "";
 private void tree(Connection conn, int id, int level) {
 	Statement stmt = null;
 	ResultSet rs = null;
@@ -15,7 +23,9 @@ private void tree(Connection conn, int id, int level) {
 		String sql = "select * from article where pid = " + id;
 		rs = stmt.executeQuery(sql);
 		while(rs.next()) {
-			String del = "<td>" + "<a href='Delete.jsp?id=" + rs.getInt("id") + "&pid=" + rs.getInt("pid") + "'>删除" + "</a>" + "</td>";
+			if (login) {
+				del = "<td>" + "<a href='Delete.jsp?id=" + rs.getInt("id") + "&pid=" + rs.getInt("pid") + "'>删除" + "</a>" + "</td>";
+			}
 			str += "<tr><td>" + rs.getInt("id") + "</td>" + 
 				   "<td>" + preStr + "<a href='ShowArticleCont.jsp?id=" + rs.getInt("id") + "'>" + rs.getString("title") + "</a>" + "</td>" +
 				   del + "</tr>";
@@ -51,7 +61,9 @@ Statement stmt = conn.createStatement();
 String sql = "select * from article where pid = 0";
 ResultSet rs = stmt.executeQuery(sql);
 while(rs.next()) {
-	String del = "<td>" + "<a href='Delete.jsp?id=" + rs.getInt("id") + "&pid=" + rs.getInt("pid") + "'>删除" + "</a>" + "</td>";
+	if (login) {
+		del = "<td>" + "<a href='Delete.jsp?id=" + rs.getInt("id") + "&pid=" + rs.getInt("pid") + "'>删除" + "</a>" + "</td>";
+	}
 	str += "<tr><td>" + rs.getInt("id") + "</td>" + 
 		   "<td><a href='ShowArticleCont.jsp?id=" + rs.getInt("id") + "'>" + rs.getString("title") + "</a>" + "</td>" +
 		   del + "</tr>";
@@ -73,7 +85,9 @@ conn.close();
 <body>
 <table border=1>
 <%=str %>
-<% str = ""; %>
+<% str = ""; 
+login = false;
+del = "";%>
 </table>
 </body>
 </html>
