@@ -15,7 +15,7 @@ if (null != action && action.equals("action")) {
 	}
 	//ShowArticleTree  &  Delete 里检测用。
 	session.setAttribute("admin", "true");
-	response.sendRedirect("ShowArticleTree.jsp");
+	response.sendRedirect("ShowArticleFlat.jsp");
 }
 %>
 
