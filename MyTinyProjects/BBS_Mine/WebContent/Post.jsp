@@ -37,7 +37,7 @@ if (null != action && action.equals("post")) {
 	conn.commit();
 	conn.setAutoCommit(true);
 
-	response.sendRedirect("ShowArticleFlat.jsp");
+	response.sendRedirect("ShowArticleTree.jsp");
 
 }
 %>

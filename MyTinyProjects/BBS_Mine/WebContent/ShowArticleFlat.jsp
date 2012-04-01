@@ -8,30 +8,47 @@ if (null != admin && admin.equals("true")) {
 }
 %>
 <%!
-String str = "";
-String del = "";
 boolean login = false;
+int pageSize = 3;
 %>
+<%
+
+String strPageNo = request.getParameter("pageNo");
+int pageNo;
+if (null == strPageNo || strPageNo.equals("")) {
+	pageNo = 1;
+} else {
+	try {
+		pageNo = Integer.parseInt(strPageNo.trim());
+	} catch(NumberFormatException e) {
+		pageNo = 1;
+	}
+	if (pageNo <= 0) {
+		pageNo = 1;
+	}
+}
+%>
+
 <%
 Class.forName("com.mysql.jdbc.Driver");
 String url = "jdbc:mysql://localhost:3306/bbs";
 Connection conn = DriverManager.getConnection(url, "root", "amigo");
 
-Statement stmt = conn.createStatement();
-String sql = "select * from article where pid = 0";//pid = 0，所有的主题帖。
-ResultSet rs = stmt.executeQuery(sql);
-while(rs.next()) {
-	if (login) {
-		del = "<td>" + "<a href='Delete.jsp?id=" + rs.getInt("id") + "&pid=" + rs.getInt("pid") + "'>删除" + "</a>" + "</td>";
-	}
-	str += "<tr><td>" + rs.getInt("id") + "</td>" + 
-		   "<td><a href='ShowArticleCont.jsp?id=" + rs.getInt("id") + "'>" + rs.getString("title") + "</a>" + "</td>" +
-		   del + "</tr>";
-}
+Statement stmtCount = conn.createStatement();
+String sql = "select count(*) from article where pid = 0";//pid = 0，所有的主题帖。
+ResultSet rsCount = stmtCount.executeQuery(sql);
+rsCount.next();
 
-rs.close();
-stmt.close();
-conn.close();
+int totalRecords = rsCount.getInt(1);
+int totalPages = totalRecords / pageSize == 0 ? totalRecords / pageSize : totalRecords / pageSize + 1;
+if (pageNo > totalPages) {
+	pageNo = totalPages;
+}
+int startPos = (pageNo -1 ) * pageSize;
+
+Statement stmt = conn.createStatement();
+ResultSet rs = stmt.executeQuery("select * from article where pid = 0 order by pdate desc limit " + startPos + ", " + pageSize);
+
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -42,11 +59,27 @@ conn.close();
 <body>
 <a href="Post.jsp">新帖子</a>
 <table border=1>
-<%=str %>
-<% str = ""; 
+	<tr><td>id</td><td>content</td></tr>
+<%	while(rs.next()) {
+%>
+		<tr>
+			<td><%=rs.getInt("id") %></td>
+			<td><%=rs.getString("title") %></td>
+		</tr>	
+<%
+	}
 login = false;
-del = "";%>
+rsCount.close();
+stmtCount.close();
+rs.close();
+stmt.close();
+conn.close();
+%>
 </table>
+
+共<%=totalPages %>页
+第<%=pageNo %>页
+
 </body>
 </html>
 
