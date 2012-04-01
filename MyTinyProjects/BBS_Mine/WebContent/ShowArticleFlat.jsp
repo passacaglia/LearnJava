@@ -39,6 +39,7 @@ String sql = "select count(*) from article where pid = 0";//pid = 0，所有的�
 ResultSet rsCount = stmtCount.executeQuery(sql);
 rsCount.next();
 
+//算出总页数、起始页数
 int totalRecords = rsCount.getInt(1);
 int totalPages = totalRecords / pageSize == 0 ? totalRecords / pageSize : totalRecords / pageSize + 1;
 if (pageNo > totalPages) {
@@ -46,6 +47,9 @@ if (pageNo > totalPages) {
 }
 int startPos = (pageNo -1 ) * pageSize;
 
+//按  日期 的逆序、  分页的方式查询。
+//日期的逆序：order by pdate desc 
+//mysql里的分页用 : limit startPosition, pageSize
 Statement stmt = conn.createStatement();
 ResultSet rs = stmt.executeQuery("select * from article where pid = 0 order by pdate desc limit " + startPos + ", " + pageSize);
 
