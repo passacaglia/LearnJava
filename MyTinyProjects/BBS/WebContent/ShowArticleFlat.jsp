@@ -66,6 +66,8 @@ while (rs.next()) {
 	</tr>
 <%
 }
+rsCount.close();
+stmtCount.close();
 rs.close();
 stmt.close();
 conn.close();
