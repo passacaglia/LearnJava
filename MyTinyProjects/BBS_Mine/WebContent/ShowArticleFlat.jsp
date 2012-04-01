@@ -59,12 +59,14 @@ ResultSet rs = stmt.executeQuery("select * from article where pid = 0 order by p
 <body>
 <a href="Post.jsp">新帖子</a>
 <table border=1>
-	<tr><td>id</td><td>content</td></tr>
+
 <%	while(rs.next()) {
 %>
 		<tr>
 			<td><%=rs.getInt("id") %></td>
-			<td><%=rs.getString("title") %></td>
+			<td><a href="ShowArticleCont.jsp?id=<%=rs.getInt("id") %>">
+				<%=rs.getString("title") %></a>
+				</td>
 		</tr>	
 <%
 	}
@@ -79,6 +81,9 @@ conn.close();
 
 共<%=totalPages %>页
 第<%=pageNo %>页
+&nbsp;&nbsp;
+
+
 
 </body>
 </html>
