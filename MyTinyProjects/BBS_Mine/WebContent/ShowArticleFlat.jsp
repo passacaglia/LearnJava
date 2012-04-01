@@ -94,9 +94,8 @@ conn.close();
 <br />
 <br />
 
-<!-- 不写action也提交成功了 -->
-<!-- name="form"的时候-->
-<form name="form">
+<!-- doucment.formName.submit() -->
+<form name="form" action="ShowArticleFlat.jsp" method="post">
 	<select name="pageNo" onchange="document.form.submit()">
 		<%
 			for (int i=1; i<=totalPages; i++) {
@@ -111,7 +110,7 @@ conn.close();
 <br />
 <br />
 
-<form name="form">
+<form name="form_go">
 	<input type="text" name="pageNo" size="3">
 	<input type="submit" value="go">
 </form>

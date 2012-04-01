@@ -81,7 +81,9 @@ conn.close();
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
 <a href="ShowArticleFlat.jsp?pageNo=<%=pageNo+1%>"> > </a>
 
-<!-- 不写action也成功了 -->
+<!-- document.formName.submit() -->
+<!-- name="form"的时候-->
+<!-- 写上比较好 -->
 <form name="form" action="ShowArticleFlat.jsp">
 	<select name="pageNo" onchange="document.form.submit()">
 		<%
