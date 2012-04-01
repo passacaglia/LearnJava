@@ -83,7 +83,34 @@ conn.close();
 第<%=pageNo %>页
 &nbsp;&nbsp;
 
+<br />
+<a href="ShowArticleFlat.jsp?pageNo=<%=pageNo-1 %>"> < </a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="ShowArticleFlat.jsp?pageNo=<%=pageNo+1 %>"> > </a>
+<br />
+<br />
 
+<!-- 不写action也提交成功了 -->
+<!-- name="form"的时候-->
+<form name="form">
+	<select name="pageNo" onchange="document.form.submit()">
+		<%
+			for (int i=1; i<=totalPages; i++) {
+		%>				
+				<option value="<%=i %>" <%=(pageNo == i) ? "selected" : "" %> > 第 &nbsp; <%=i %> &nbsp; 页 
+		<%	
+			}
+		%>
+	</select>
+</form>
+
+<br />
+<br />
+
+<form name="form">
+	<input type="text" name="pageNo" size="3">
+	<input type="submit" value="go">
+</form>
 
 </body>
 </html>
