@@ -60,6 +60,8 @@ public class HelloRE {
 		print("aaa8888c".matches(".*\\d{4}."));
 		print("aaa8888c".matches(".*\\b\\d{4}."));
 */		
+		//email
+		//print("abasdfwertas@asodfjowe.com".matches("[\\w[.-]]+@[\\w[.-]]+\\.[\\w]+"));
 		
 		//matches, find, lookingAt
 /*		Pattern p = Pattern.compile("\\d{3,5}");
