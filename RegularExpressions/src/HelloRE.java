@@ -111,7 +111,7 @@ public class HelloRE {
 		print(buf);
 */
 		
-		Pattern p = Pattern.compile("(\\d{3,5})([a-z]{2})");
+/*		Pattern p = Pattern.compile("(\\d{3,5})([a-z]{2})");
 		String s = "123aa-13536bb-890cc-00";
 		Matcher m = p.matcher(s);
 		while(m.find()) {
@@ -119,10 +119,32 @@ public class HelloRE {
 			print(m.group(1));//第一个小括号，是第一组。//只打印数字
 			//print(m.group(2));//letters only
 		}
+*/
+		
+		//qulifiers
+/*		//Pattern p = Pattern.compile("(.{3,10})[0-9]");//Greedy quantifiers //一次吞10个，不满足？那就再吐出个来看看满足不。
+		//Pattern p = Pattern.compile("(.{3,10}?)[0-9]");//Reluctant quantifiers //一次吞 3个，最小化处理。不满足？再吃个。
+		Pattern p = Pattern.compile("(.{3,10}+)[0-9]");//Possessive quantifiers //一次吞10个，不满足？也不吐出。
+		String s = "aaaa5bbbb6";
+		Matcher m = p.matcher(s);
+		if (m.find()) {
+			print((m.start()) + "-" + m.end());
+		} else {
+			print("not match!");
+		}
+*/		
 
+		//flags的简写 
+/*		Pattern p = Pattern.compile("java", Pattern.CASE_INSENSITIVE);
+		System.out.println("java".matches("(?i)(java)"));
+*/
 		
-		
-		
+		//back refenrences
+		Pattern p = Pattern.compile("(\\d\\d)\\1");//接下来找到的串,必须和第一个组(\\1)找到的子串    完全相同.
+		String s = "1212";
+		//String s = "1234";
+		Matcher m = p.matcher(s);
+		print(m.matches());
 		
 		
 		
