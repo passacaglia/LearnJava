@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+
+body { font-family:Verdana; font-size:14px; margin:0;}
+
+#info{padding:0px;}
+#infobox{padding:0px 0px;background-color: #640000;}
+#center{background: #ABBAAC; border-top:2px solid #333; padding:20px;}
+.c{ clear:both; height:1px; overflow: hidden; background:#333}
+#infobox li{ border-right:1px solid #000; float:right; margin-right:1px; text-align:center;margin-top:-4px; }
+a{ width:100px;line-height:28px; display:block;}
+a:link,a:visited{color:#000;background:#FF9900;text-decoration: none;}
+a:hover,a:active{ color:#FFFF00;background:#000;}
+
+
+#container {margin:0 auto; width:85%;}
+#logo { height:50px; background:#9c6; margin-top:5px; margin-bottom:5px;}
+#header { height:100px; background:#9c6; margin-bottom:5px;}
+#menu { height:30px; background:#693; margin-bottom:5px;}
+#mainContent { height:500px; margin-bottom:5px;}
+#sidebar { float:left; width:200px; height:500px; background:#cf9;}
+#content { margin-left:205px !important; margin-left:202px; height:500px; background:#ffa;}
