@@ -14,6 +14,24 @@
 <div id="container">
 	<!-- header -->
   <jsp:include page="inc_header.jsp" />
+	  
+    <div id="nav">
+  	<div id="nav_l"></div>
+    <div id="nav_r"></div>
+    <div class="nav_main">
+      <ul>
+        <li><a href="#" id="nav_current"><span>首页</span></a></li>
+        <li><a href="news_list.html"><span>企业新闻</span></a></li>
+        <li><a href="#"><span>企业简介</span></a></li>
+        <li><a href="#"><span>产品展厅</span></a></li>
+        <li><a href="#"><span>订单跟踪</span></a></li>
+        <li><a href="#"><span>联系我们</span></a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="clearfloat"></div>
+  
   
   <!-- main content -->
   <div id="maincontent">
