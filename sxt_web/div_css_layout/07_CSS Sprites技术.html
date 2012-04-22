@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+
+<style type="text/css">
+<!--
+body {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	line-height: 1.5px;
+}
+a {
+	color: #000;
+	text-decoration: none;
+}
+a:hover {
+	color: #f00;
+}
+#menu {
+	height: 28px;
+	width: 500px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	border-bottom-width: 3px;
+	border-bottom-style: solid;
+	border-bottom-color: #e10001;
+}
+#menu ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+#menu ul li {
+	float: left;
+	margin-left: 2px;
+}
+#menu ul li a {
+	font-size: 14px;
+	line-height: 28px;
+	text-decoration: none;
+	background-image: url(images/nav_bg.gif);
+	background-repeat: no-repeat;
+	background-position: 0px -28px;
+	text-align: center;
+	display: block;
+	height: 28px;
+	width: 87px;
+}
+#menu ul li a:hover {
+	background-image: url(images/nav_bg.gif);
+	background-repeat: no-repeat;
+	background-position: 0px -56px;
+}
+#menu ul li #current {
+	font-weight: bold;
+	color: #fff;
+	background-image: url(images/nav_bg.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+#content {
+	font-family: Verdana, Geneva, sans-serif;
+	line-height: normal;
+	text-decoration: none;
+	font-size: 18px;
+	width: 500px;
+	overflow: auto;
+	margin: 30px;
+	padding: 20px;
+}
+
+-->
+</style>
+</head>
+
+<body>
+
+
+<div id="menu">
+<ul>
+<li><a id="current" href="#">首页</a></li>
+<li><a href="#">网页版式</a></li>
+<li><a href="#">web教程</a></li>
+<li><a href="#">web实例</a></li>
+<li><a href="#">常用代码</a></li>
+</ul>
+</div>
+
+<div id="content">
+<h6> CSS Sprites技术</h6>
+<p>
+
+CSS Sprites在国内很多人叫css精灵或css雪碧。它是把网页中一些背景图片整合到一张图片文件中，再利用CSS的背景图片定位到要显示的位置。这样做可以减少文件体积，减少对服务器的请求次数，提高效率。
+</p>
+<p>
+讲CSS Sprites之前，先把背景图片给搞清楚
+</p>
+<code>
+#menu ul li a { background:#ccc url(images/nav_bg2.gif) 0 0 no-repeat; }
+</code>
+<p>
+css背景属性缩写后如上所示，#ccc表示背景色；url（）里是背景图片路径；接下来的两个数值参数分别是左右和上下，第一个参数表示距左多少px，第二个参数表示距上多少，这和padding的简写方式是不 一样，一定不要弄混。另外再强调一点css中值为0可以不带单位，其它数值都必须带单位（line-height值为多少倍时，zoom，z-index除外）；no-repeat表示背景图片向哪个方向重复，此时为不重复。
+</p>
+<p>
+还需说明一点的是定位图片位置的参数是以图片的左上角为原点的，理解了这些，CSS Sprites技术就基本上懂了，就是靠背景图片定位来实现的。把三张背景图片整合到一张上，如下图：
+</p>
+
+<img src="images/nav_bg.gif" />
+
+</pre>
+
+
+</div>
+
+</body>
+</html>
