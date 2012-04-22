@@ -28,11 +28,6 @@ a:hover { color:#f00;}
 .nav_main ul li a:hover span  { background:url(../images/nav_bg.gif) right -163px no-repeat; cursor:pointer;}
 .nav_main ul li a#nav_current { height:31px; line-height:31px; background:url(../images/nav_bg.gif) 0 -132px no-repeat; color:#646464;}
 .nav_main ul li a#nav_current span { height:31px; background:url(../images/nav_bg.gif) right -132px no-repeat;}
-.nav_son { height:30px;}
-.nav_son ul li { float:left; margin-top:4px;}
-.nav_son ul li a { display:block; width:78px; height:22px; line-height:22px; text-align:center; color:#6e6e6e;}
-.nav_son ul li a:hover { background:url(../images/nav_bg.gif) 0 -198px no-repeat;}
-
 
 /*main*/
 #maincontent { overflow:auto; zoom:1;}
