@@ -70,9 +70,11 @@
 	        <div id="index_box">
 				<jsp:include page="inc_news.jsp">
 					<jsp:param name="who" value="index" />
+					<jsp:param name="count" value="8" />
 				</jsp:include>
 				<jsp:include page="inc_company.jsp">
 					<jsp:param name="who" value="index" />
+					<jsp:param name="count" value="8" />
 				</jsp:include>
 			</div>
 		</div>
