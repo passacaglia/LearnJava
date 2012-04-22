@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+
+<%!
+String more = ""; 
+%>
+
+<%
+String who = request.getParameter("who");
+if ((null != who) && ("" != who) && who.equals("index")) {
+	more = "<a class='more' href='news_list.jsp'>更多..</a>";
+}
+%>
+
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -10,7 +24,7 @@
 <body>
 
         <div class="box">
-          <h2><a class="more" href="#">更多..</a><span>新闻中心</span></h2>
+          <h2><%=more %><% more=""; %><span>新闻中心</span></h2>
           <div class="box_con">
             <ul>
               <li><a href="#">纯CSS实现三列DIV等高布局</a><span>这里放时间</span></li>

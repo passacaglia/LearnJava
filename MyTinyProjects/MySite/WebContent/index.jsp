@@ -68,8 +68,12 @@
 	    <div id="main">
 			<jsp:include page="inc_product.jsp" />
 	        <div id="index_box">
-				<jsp:include page="inc_news.jsp" />
-				<jsp:include page="inc_company.jsp" />
+				<jsp:include page="inc_news.jsp">
+					<jsp:param name="who" value="index" />
+				</jsp:include>
+				<jsp:include page="inc_company.jsp">
+					<jsp:param name="who" value="index" />
+				</jsp:include>
 			</div>
 		</div>
 	    
