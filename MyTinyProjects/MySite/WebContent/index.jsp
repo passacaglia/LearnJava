@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
 <title>主页</title>
 <link href="css/layout.css" rel="stylesheet" type="text/css" />
+<link href="css/index.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
