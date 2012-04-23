@@ -52,6 +52,8 @@ if (null != action && action.equals("post")) {
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" src="../js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../js/xheditor-1.1.13-zh-cn.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -66,7 +68,7 @@ if (null != action && action.equals("post")) {
 		</tr>
 		<tr>
 			<td>content</td>
-			<td><textarea name="content" cols="55" rows="10"></textarea></td> 
+			<td><textarea name="content" class="xheditor" cols="55" rows="10"></textarea></td> 
 		</tr>
 		<tr>
 			<td></td>
