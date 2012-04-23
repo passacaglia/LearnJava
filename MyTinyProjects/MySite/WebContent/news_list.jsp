@@ -13,7 +13,7 @@
 <body>
 <div id="container">
 	<!-- header -->
-	<jsp:include page="inc_header.jsp" />
+	<jsp:include page="include/inc_header.jsp" />
 	  
 	<div id="nav">
 	  	<div id="nav_l"></div>
@@ -38,16 +38,17 @@
 	  	
 	    <div id="main">
 	        <div id="index_box">
-				<jsp:include page="inc_news.jsp" />
+				<jsp:include page="include/inc_news.jsp"/>
+				
 			</div>
 		</div>
 	    
-		<jsp:include page="inc_side.jsp" />
+		<jsp:include page="include/inc_side.jsp" />
 	    
 	</div>
   
 	<!-- footer -->
-	<jsp:include page="inc_footer.jsp" />
+	<jsp:include page="include/inc_footer.jsp" />
 </div>
 </body>
 </html>

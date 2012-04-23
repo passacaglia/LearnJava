@@ -1,3 +1,3 @@
 eclipse.preferences.version=1
-encoding//WebContent/inc_footer.jsp=UTF-8
-encoding//WebContent/inc_header.jsp=UTF-8
+encoding//WebContent/include/inc_footer.jsp=UTF-8
+encoding//WebContent/include/inc_header.jsp=UTF-8

@@ -8,10 +8,17 @@ String more = "";
 %>
 <%
 String who = request.getParameter("who");
-int count = Integer.parseInt(request.getParameter("count"));
 if ((null != who) && ("" != who) && who.equals("index")) {
 	more = "<a class='more' href='news_list.jsp'>更多..</a>";
 }
+
+String c = request.getParameter("count");
+int count = -1;//不传参数过来。就是-1。
+if ((null != c) && ("" != c)) {
+	count = Integer.parseInt(c);
+//System.out.println(c);
+}
+
 %>
 
 <%
@@ -20,7 +27,7 @@ String url = "jdbc:mysql://localhost/mysite?user=root&password=amigo";
 Connection conn = DriverManager.getConnection(url);
 
 Statement stmt = conn.createStatement();
-String sql = "select * from news";
+String sql = "select * from news order by publishtime desc";
 ResultSet rs = stmt.executeQuery(sql);
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -37,9 +44,7 @@ ResultSet rs = stmt.executeQuery(sql);
             <ul>
 <% 
 while(rs.next()) {
-	if (count > 0) {
-		count--;
-	}
+	count--;//只有index.jsp传过来的是8,大于0。有可能通过自减，到0.
 %>
               <li><a href="#"><%=rs.getString("title") %></a><span><%=rs.getInt("publishtime") %></span></li>
 <% 
