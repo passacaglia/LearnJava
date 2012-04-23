@@ -6,6 +6,7 @@
 <%!
 String more = "";
 int pageSize = 15;
+
 %>
 
 <%
@@ -90,26 +91,11 @@ while(rs.next()) {
 %>
             </ul>
             
-            <div id="selector1">
-	            <a href="news_list.jsp?pageNo=<%= pageNo - 1 %>"> 上一页 </a>
-	            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	            <a href="news_list.jsp?pageNo=<%= pageNo + 1 %>"> 下一页 </a>
-	            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	            <b>第<%=pageNo %>页</b>
-	            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	            <b>共<%=totalPages %>页</b>
-	            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </div>
-            
-            <div id="selector2">
-	            <form name="form" action="news_list.jsp">
-	            	<select name="pageNo" onchange="document.form.submit()">
-		            	<% for (int i=1; i<=totalPages; i++) { %>
-		            		<option value=<%=i%>  <%=(pageNo == i) ? "selected" : "" %> >第  <%=i %> 页</option>
-		            	<% } %>
-					</select>	            	
-	            </form>
-			</div>	            
+            <jsp:include page="inc_selector.jsp">
+            	<jsp:param name="pageNo" value="<%=pageNo %>" />
+            	<jsp:param name="totalPages" value="<%=totalPages %>" />
+            </jsp:include>
+                        
           </div>
         </div>
 
