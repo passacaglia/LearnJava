@@ -38,7 +38,9 @@
 	  	
 	    <div id="main">
 	        <div id="index_box">
-				<jsp:include page="include/inc_news.jsp"/>
+				<jsp:include page="include/inc_news.jsp">
+					<jsp:param name="pageNo" value="-2999" />
+				</jsp:include>
 				
 			</div>
 		</div>

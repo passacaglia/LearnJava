@@ -5,7 +5,9 @@
 
 <%!
 String more = "";
+int pageSize = 5;
 %>
+
 <%
 String who = request.getParameter("who");
 if ((null != who) && ("" != who) && who.equals("index")) {
@@ -18,6 +20,24 @@ if ((null != c) && ("" != c)) {
 	count = Integer.parseInt(c);
 //System.out.println(c);
 }
+%>
+
+<%
+//get & set pageNo
+String strPageNo = request.getParameter("pageNo");
+int pageNo;
+if ((null == strPageNo) || strPageNo.equals("")) {
+	pageNo = 1;
+} else {
+	try {
+		 pageNo = Integer.parseInt(strPageNo);
+	} catch(NumberFormatException e) {
+		pageNo = 1;
+	}
+	if (pageNo < 0) {
+		pageNo = 1;
+	}
+}
 
 %>
 
@@ -26,9 +46,24 @@ Class.forName("com.mysql.jdbc.Driver");
 String url = "jdbc:mysql://localhost/mysite?user=root&password=amigo";
 Connection conn = DriverManager.getConnection(url);
 
-Statement stmt = conn.createStatement();
+Statement stmtCount = conn.createStatement();
 String sql = "select * from news order by publishtime desc";
-ResultSet rs = stmt.executeQuery(sql);
+ResultSet rsCount = stmtCount.executeQuery(sql);
+
+rsCount.next();
+//total records --> total pages
+int totalRecords = rsCount.getInt(1);
+int totalPages = totalRecords / pageSize == 0 ? (totalRecords/pageSize) : (totalRecords/pageSize + 1);
+if (pageNo > totalPages) {
+	pageNo = totalPages;
+}
+//starts
+int startPos = (pageNo-1) * pageSize;
+
+//按分页的方式查询。
+Statement stmt = conn.createStatement();
+String sql2 = "select * from news order by publishtime desc limit " + startPos + ", " + pageSize;
+ResultSet rs = stmt.executeQuery(sql2);
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -59,6 +94,8 @@ while(rs.next()) {
 
 
 <%
+rsCount.close();
+stmtCount.close();
 rs.close();
 stmt.close();
 conn.close();
