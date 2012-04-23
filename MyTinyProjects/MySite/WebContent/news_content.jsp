@@ -2,29 +2,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-//get & set pageNo
-String strPageNo = request.getParameter("pageNo");
-int pageNo;
-if ((null == strPageNo) || strPageNo.equals("")) {
-	pageNo = 1;
+//get & set id
+String strId = request.getParameter("id");
+int id;
+if ((null == strId) || strId.equals("")) {
+	id = 1;
 } else {
-	try {
-		 pageNo = Integer.parseInt(strPageNo.trim());
-	} catch(NumberFormatException e) {
-		pageNo = 1;
-	}
-	if (pageNo <= 0) {
-		pageNo = 1;
-	}
+	id  = Integer.parseInt(strId.trim());
 }
-
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
-<title>新闻</title>
+<title>新闻内容</title>
 <link href="css/layout.css" rel="stylesheet" type="text/css" />
 <link href="css/list.css" rel="stylesheet" type="text/css" />
 </head>
@@ -57,8 +49,8 @@ if ((null == strPageNo) || strPageNo.equals("")) {
 	  	
 	    <div id="main">
 	        <div id="index_box">
-				<jsp:include page="include/inc_news_list.jsp">
-					<jsp:param name="pageNo" value="<%=pageNo %>" />
+				<jsp:include page="include/inc_news_content.jsp">
+					<jsp:param name="id" value="<%=id %>" />
 				</jsp:include>
 				
 			</div>

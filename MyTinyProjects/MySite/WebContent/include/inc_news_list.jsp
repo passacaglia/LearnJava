@@ -4,17 +4,11 @@
 <%@ page import="java.sql.*" %>
 
 <%!
-String more = "";
 int pageSize = 15;
 
 %>
 
 <%
-String who = request.getParameter("who");
-if ((null != who) && ("" != who) && who.equals("index")) {
-	more = "<a class='more' href='news_list.jsp'>更多..</a>";
-}
-
 String c = request.getParameter("count");
 int count = -1;//不传参数过来。就是-1。
 if ((null != c) && ("" != c)) {
@@ -75,14 +69,14 @@ ResultSet rs = stmt.executeQuery(sql2);
 <body>
 
         <div class="box">
-          <h2><%=more %><% more=""; %><span>新闻中心</span></h2>
+          <h2><span>新闻中心</span></h2>
           <div class="box_con">
             <ul>
 <% 
 while(rs.next()) {
 	count--;//只有index.jsp传过来的是8,大于0。有可能通过自减，到0.
 %>
-              <li><a href="#"><%=rs.getString("title") %></a><span><%=rs.getInt("publishtime") %></span></li>
+              <li><a href="news_content.jsp?id=<%=rs.getInt("id") %>"><%=rs.getString("title") %></a><span><%=rs.getInt("publishtime") %></span></li>
 <% 
 	if (0 == count) {
 		break;
@@ -91,7 +85,7 @@ while(rs.next()) {
 %>
             </ul>
             
-            <jsp:include page="inc_selector.jsp">
+            <jsp:include page="inc_sub/inc_selector.jsp">
             	<jsp:param name="pageNo" value="<%=pageNo %>" />
             	<jsp:param name="totalPages" value="<%=totalPages %>" />
             </jsp:include>

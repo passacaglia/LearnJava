@@ -32,7 +32,7 @@ ResultSet rs = stmt.executeQuery(sql);
 while(rs.next()) { 
 	count--;
 %>
-              <li><a href="#"><%=rs.getString("title") %></a><span><%=rs.getInt("publishtime") %></span></li>
+              <li><a href="news_content.jsp?id=<%= rs.getInt("id") %>"><%=rs.getString("title") %></a><span><%=rs.getInt("publishtime") %></span></li>
 <% 
 	if (0 == count) {
 		break;
