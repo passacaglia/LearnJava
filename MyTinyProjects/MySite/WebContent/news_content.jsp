@@ -18,7 +18,7 @@ if ((null == strId) || strId.equals("")) {
 <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
 <title>新闻内容</title>
 <link href="css/layout.css" rel="stylesheet" type="text/css" />
-<link href="css/list.css" rel="stylesheet" type="text/css" />
+<link href="css/content.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
