@@ -2,10 +2,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 
 <%!
 int pageSize = 15;
-
+SimpleDateFormat pt = new SimpleDateFormat("yyyy-MM-dd");
+String date;
 %>
 
 <%
@@ -75,8 +77,9 @@ ResultSet rs = stmt.executeQuery(sql2);
 <% 
 while(rs.next()) {
 	count--;//只有index.jsp传过来的是8,大于0。有可能通过自减，到0.
+	date = pt.format(rs.getDate("publishtime"));
 %>
-              <li><a href="news_content.jsp?id=<%=rs.getInt("id") %>"><%=rs.getString("title") %></a><span><%=rs.getInt("publishtime") %></span></li>
+              <li><a href="news_content.jsp?id=<%=rs.getInt("id") %>"><%=rs.getString("title") %></a><span><%=date %></span></li>
 <% 
 	if (0 == count) {
 		break;
