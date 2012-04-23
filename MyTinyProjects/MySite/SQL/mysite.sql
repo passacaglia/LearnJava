@@ -21,7 +21,8 @@ insert into news values (null, 'ÈÃÄãĞÄÇéºÃÆğÀ´µÄ12²¿µçÓ°(1)', '¡¶ÉñÌ½·É»úÍ·¡·¡¶Î
 insert into news values (null, 'ÈÃÄãĞÄÇéºÃÆğÀ´µÄ12²¿µçÓ°(2)', '¡¶ÎÒµÄÒ°ÂùÀÏÊ¦¡·¡¶ÃÀÅ®Ò²·³ÄÕ¡·¡¶·è¿ñµÄÊ¯Í·¡·¡¶Ä±É±¿ìÀÖ¡·', now() );
 insert into news values (null, 'ÈÃÄãĞÄÇéºÃÆğÀ´µÄ12²¿µçÓ°(3)', '¡¶ÉÙ¶ù²»ÒË¡·¡¶ÎÒÎªÂêÀö¿ñ¡·¡¶ÃÀ¹úÅÉ¡·¡¶ÍµÌìÇéÔµ¡·', now() );
 
-
+insert into news values (null, 'Memento1', 'Another John G. to look for ?', now() );
+insert into news values (null, 'Lord of the Rings', 'One Ring to rule them all, One Ring to find them,One Ring to bring them all and in the darkness bind them. ', now() );
 
 
 
