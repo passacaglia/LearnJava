@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+//get & set pageNo
+String strPageNo = request.getParameter("pageNo");
+int pageNo;
+if ((null == strPageNo) || strPageNo.equals("")) {
+	pageNo = 1;
+} else {
+	try {
+		 pageNo = Integer.parseInt(strPageNo.trim());
+	} catch(NumberFormatException e) {
+		pageNo = 1;
+	}
+	if (pageNo <= 0) {
+		pageNo = 1;
+	}
+}
+
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -39,7 +58,7 @@
 	    <div id="main">
 	        <div id="index_box">
 				<jsp:include page="include/inc_news.jsp">
-					<jsp:param name="pageNo" value="-2999" />
+					<jsp:param name="pageNo" value="<%=pageNo %>" />
 				</jsp:include>
 				
 			</div>
