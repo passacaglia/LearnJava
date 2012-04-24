@@ -6,8 +6,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>登录</title>
+<link href="themes/login/css/login_layout.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-login
+<div id="main_content">
+	<form action="" method="post">
+		  <div id="btn">
+			  <ul>
+	                <li>Company Name : </li>
+    			</ul>
+          </div>
+          <div id="user_passwd">
+              <ul>
+              	  <li>用户名：<span><input name="username" type="text" size="20" maxlength="20" /></span></li>
+                  <li>密&nbsp;&nbsp;&nbsp;码：<span><input name="passwd" type="password" size="20" maxlength="20" /></span></li>
+              </ul>
+          </div>
+			
+ 		 <div id="btn">
+			  <ul>
+	                <li><input name="remember" type="checkbox" value="" />Remember me
+                	<span><input id="sbm" type="submit" value="登录" /></span></li>
+    			</ul>
+          </div>
+
+    </form>
+</div>
 </body>
 </html>
