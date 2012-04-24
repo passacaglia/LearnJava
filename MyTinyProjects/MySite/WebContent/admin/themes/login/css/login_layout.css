@@ -32,7 +32,6 @@ li {
 #btn {
 	background-image: url(../images/login_btn_bg.gif);
 	background-repeat: repeat;
-	height: 30px;
 	width: auto;
 	text-align: left;
 	display: block;

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+String e = "Welcome ...";
+String error = (String)request.getParameter("error");
+if ((null != error) && error.equals("1")) {
+	e = "<font color='red'>Wrong user name or password !</font>";
+}
+%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -10,16 +17,18 @@
 </head>
 <body>
 <div id="main_content">
-	<form action="" method="post">
+	<form action="login.do" method="post">
+		<input type="hidden" name="method" value="login" />
 		  <div id="btn">
 			  <ul>
 	                <li>Company Name : </li>
+	                <li><%=e %></li>
     			</ul>
           </div>
           <div id="user_passwd">
               <ul>
               	  <li>用户名：<span><input name="username" type="text" size="20" maxlength="20" /></span></li>
-                  <li>密&nbsp;&nbsp;&nbsp;码：<span><input name="passwd" type="password" size="20" maxlength="20" /></span></li>
+                  <li>密&nbsp;&nbsp;&nbsp;码：<span><input name="password" type="password" size="20" maxlength="20" /></span></li>
               </ul>
           </div>
 			
