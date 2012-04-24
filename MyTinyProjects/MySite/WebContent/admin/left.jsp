@@ -1,3 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+String username = (String)session.getAttribute("username");
+if (null == username) {
+	response.sendRedirect("login.jsp");
+}
+%>    
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -30,12 +39,12 @@
 		<div id="left">
 			<h5>主菜单</h5>
 			<ul>
-				<li><a href="main.html" target="frameRight">文章管理</a></li>
-				<li><a href="setting.html" target="frameRight">基本设置</a></li>
+				<li><a href="main.jsp" target="frameRight">文章管理</a></li>
+				<li><a href="setting.jsp" target="frameRight">基本设置</a></li>
 			</ul>
 			<h5>用户管理</h5>
 			<ul>
-				<li><a href="members.html" target="frameRight">用户管理</a></li>
+				<li><a href="members.jsp" target="frameRight">用户管理</a></li>
 			</ul>
 			<h5>程序信息</h5>
 			<ul>

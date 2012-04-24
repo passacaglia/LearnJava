@@ -1,3 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+String username = (String)session.getAttribute("username");
+if (null == username) {
+	response.sendRedirect("login.jsp");
+}
+%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -12,11 +21,10 @@
 		<div id="main">
 			<div class="menu_type">
 				<ul>
-					<li><a href="#">基本设置</a></li>
-					<li><a href="#">资源管理</a></li>
-					<li><a href="#">数据备份</a></li>
-					<!-- <li><a href="#">生成HTML</a></li>
-					<li><a href="#">搜索引擎优化</a></li> -->
+					<li><a href="#">用户列表</a></li>
+					<li><a href="#">添加新用户</a></li>
+					<li><a href="#">已禁止用户</a></li>
+					<li><a href="#">用户权限设置</a></li>
 				</ul>
 			</div>
 			<h5><span class="fl">用户列表</span><span class="fr">共 3450 条记录 | <a href="javascript:window.location.reload()">刷新本页</a></span></h5>

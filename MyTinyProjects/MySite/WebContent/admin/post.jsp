@@ -2,7 +2,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
-
+<%
+String username = (String)session.getAttribute("username");
+if (null == username) {
+	response.sendRedirect("login.jsp");
+}
+%>
 <% 
 //解决 发帖 乱码问题
 request.setCharacterEncoding("utf8");
