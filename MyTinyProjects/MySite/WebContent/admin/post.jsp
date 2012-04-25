@@ -46,7 +46,7 @@ if (null != action && action.equals("post")) {
 	conn.close();
 
 	
-	response.sendRedirect("main.jsp");
+	response.sendRedirect("../include/inc_news_content.jsp");
 
 }
 
