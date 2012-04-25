@@ -59,17 +59,23 @@ if (null != action && action.equals("post")) {
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <script type="text/javascript" src="../js/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="../js/xheditor-1.1.13-zh-cn.min.js"></script>
+<script type="text/javascript" src="scripts/checkdata.js"></script>
+
 <title>Insert title here</title>
 </head>
 <body>
 
 <div>
-	<form action="post.jsp" method="post">
+	<form name="form" action="post.jsp" method="post" onsubmit="return checkdata()">
 	<input name="action" type="hidden" value="post" />
 	<table>
 		<tr>
 			<td>标题</td>
-			<td><input name="title" type="text" size="72" /></td>
+			<td><input name="title" type="text" size="72"/></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><span id="errorTitle">标题不少于5个字不多于20个字，可使用中英文，数字，下横线</span></td>
 		</tr>
 		<tr>
 			<td>内容</td>
