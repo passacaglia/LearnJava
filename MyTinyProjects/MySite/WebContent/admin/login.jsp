@@ -23,7 +23,7 @@ if (null != username) {
 </head>
 <body>
 <div id="main_content">
-	<form action="login.do" method="post">
+	<form action="index.do" method="post">
 		<input type="hidden" name="method" value="login" />
 		  <div id="btn">
 			  <ul>

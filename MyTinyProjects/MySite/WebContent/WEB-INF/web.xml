@@ -15,6 +15,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>UserServlet</servlet-name>
-    <url-pattern>/admin/login.do</url-pattern>
+    <url-pattern>/admin/index.do</url-pattern>
   </servlet-mapping>
 </web-app>
