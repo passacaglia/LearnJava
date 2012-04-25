@@ -23,7 +23,7 @@ if (null == username) {
 			<div class="nav">
 				<div class="top_menu">
 					<p class="fl lh32">您好，<span class="red fwb">Administrator</span> [ <a href="logout.jsp" onclick="parent.location.reload()">退出</a> ]</p>
-					<p class="fr lh32"><a href="#">Maps</a> | <a href="#">网站首页</a> | <a href="#">管理后台</a> | <a href="#">帮助中心</a></p>
+					<p class="fr lh32"><a href="#">Maps</a> | <a href="../" target="_blank">网站首页</a> | <a href="#">管理后台</a> | <a href="#">帮助中心</a></p>
 				</div>
 
 				<div class="themes tr">

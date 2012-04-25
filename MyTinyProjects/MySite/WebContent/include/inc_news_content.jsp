@@ -39,7 +39,7 @@ rs.next();
 
               <table>
               	<tr>
-              		<td><%=rs.getString("title") %></td>
+              		<td><h1><%=rs.getString("title") %></h1></td>
               	</tr>
               	<tr>
               		<td><%=rs.getString("publishtime") %></td>
