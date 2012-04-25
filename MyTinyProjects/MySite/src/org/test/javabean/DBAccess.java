@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 
 public class DBAccess {
 
@@ -21,6 +22,11 @@ public class DBAccess {
 	private Statement stmt = null;
 
 	private ResultSet rs = null;
+	
+	private int id;
+	private String title;
+	private String publishtime;
+	
 
 	public boolean createConn() {
 		boolean b = false;
@@ -165,4 +171,42 @@ public class DBAccess {
 	public void setUsr(String usr) {
 		this.usr = usr;
 	}
+	
+	public int getId() {
+		int value = 0;
+		try {
+			if(null != rs) {
+				value = rs.getInt("id");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return value;
+	}
+
+	public String getTitle() {
+		String value = null;
+		try {
+			if(null != rs) {
+				value = rs.getString("title");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return value;
+	}
+	
+	public String getPublishtime() {
+		String value = null;
+		SimpleDateFormat pt = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			if(null != rs) {
+				value = pt.format(rs.getDate("publishtime"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return value;
+	}
+	
 }

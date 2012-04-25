@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.sql.*" %>
 <%
 String username = (String)session.getAttribute("username");
 if (null == username) {
 	response.sendRedirect("login.jsp");
 }
-%>    
+%>
+<jsp:useBean id="dba" class="org.test.javabean.DBAccess" />
+<%
+if(dba.createConn()) {
+	String sql = "select * from news order by publishtime desc";
+	dba.query(sql);
+	
+}
+%>
+	
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -24,32 +33,28 @@ if (null == username) {
 				<tr>
 					<th width="8%">多选</th>
 					<th width="12%">ID</th>
-					<th width="25%">用户名</th>
-					<th width="30%">邮箱</th>
+					<th width="25%">标题</th>
+					<th width="30%">发布时间</th>
 					<th width="25%">操作</th>
 				</tr>
+<% while(dba.next()) { %>
 				<tr>
 					<td><label><input type="checkbox" value="1" /></label></label></td>
-					<td>1</td>
-					<td>administrator</td>
-					<td>thenbsp@gmail.com</td>
+					<td><jsp:getProperty name="dba" property="id" /></td>
+					<td><jsp:getProperty name="dba" property="title" /></td>
+					<td><jsp:getProperty name="dba" property="publishtime" /></td>
 					<td><a href="#" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
 				</tr>
-				<tr>
-					<td><label><input type="checkbox" value="1" /></label></td>
-					<td>2</td>
-					<td>thenbsp</td>
-					<td>thenbsp@gmail.com</td>
-					<td><a href="#" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
-				</tr>
-				<tr>
-					<td><label><input type="checkbox" value="1" /></label></td>
-					<td>3</td>
-					<td>杨龙</td>
-					<td>26212156@qq.com</td>
-					<td><a href="#" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
-				</tr>
-
+<% } %>
+					
+					
+					
+				
+<%
+dba.closeRs();
+dba.closeStmt();
+dba.closeConn();
+%>
 			</table>
 		</div>
 	</body>

@@ -46,7 +46,7 @@ if (null != action && action.equals("post")) {
 	conn.close();
 
 	
-	response.sendRedirect("../news_content.jsp?id=" + key);
+	response.sendRedirect("main.jsp");
 
 }
 
