@@ -49,55 +49,7 @@ if (null == username) {
 					<td>26212156@qq.com</td>
 					<td><a href="#" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
 				</tr>
-				<tr>
-					<td><label><input type="checkbox" value="1" /></label></td>
-					<td>4</td>
-					<td>administrator</td>
-					<td>thenbsp@gmail.com</td>
-					<td><a href="#" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
-				</tr>
-				<tr>
-					<td><label><input type="checkbox" value="1" /></label></td>
-					<td>5</td>
-					<td>thenbsp</td>
-					<td>thenbsp@gmail.com</td>
-					<td><a href="#" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
-				</tr>
-				<tr>
-					<td><label><input type="checkbox" value="1" /></label></td>
-					<td>6</td>
-					<td>杨龙</td>
-					<td>26212156@qq.com</td>
-					<td><a href="#" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
-				</tr>
-				<tr>
-					<td><label><input type="checkbox" value="1" /></label></td>
-					<td>7</td>
-					<td>administrator</td>
-					<td>thenbsp@gmail.com</td>
-					<td><a href="#" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
-				</tr>
-				<tr>
-					<td><label><input type="checkbox" value="1" /></label></td>
-					<td>8</td>
-					<td>thenbsp</td>
-					<td>thenbsp@gmail.com</td>
-					<td><a href="#" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
-				</tr>
-				<tr>
-					<td><label><input type="checkbox" value="1" /></label></td>
-					<td>9</td>
-					<td>杨龙</td>
-					<td>26212156@qq.com</td>
-					<td><a href="#" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
-				</tr>
-				<tr>
-					<td><label><input type="checkbox" value="1" /></label></td>
-					<td>10</td>
-					<td>administrator</td>
-					<td>thenbsp@gmail.com</td>
-					<td><a href="#" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
-				</tr>
+
 			</table>
 		</div>
 	</body>

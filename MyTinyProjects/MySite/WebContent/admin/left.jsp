@@ -40,6 +40,9 @@ if (null == username) {
 			<h5>主菜单</h5>
 			<ul>
 				<li><a href="main.jsp" target="frameRight">文章管理</a></li>
+					<ul>
+						<li><a href="post.jsp" target="frameRight">写文章</a></li>
+					</ul>
 				<li><a href="setting.jsp" target="frameRight">基本设置</a></li>
 			</ul>
 			<h5>用户管理</h5>

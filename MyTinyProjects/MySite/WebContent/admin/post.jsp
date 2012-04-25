@@ -68,12 +68,12 @@ if (null != action && action.equals("post")) {
 	<input name="action" type="hidden" value="post" />
 	<table>
 		<tr>
-			<td>title</td>
+			<td>标题</td>
 			<td><input name="title" type="text" size="72" /></td>
 		</tr>
 		<tr>
-			<td>content</td>
-			<td><textarea name="content" class="xheditor" cols="55" rows="10"></textarea></td> 
+			<td>内容</td>
+			<td><textarea name="content" class="xheditor" cols="85" rows="20"></textarea></td> 
 		</tr>
 		<tr>
 			<td></td>
