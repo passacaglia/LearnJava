@@ -6,7 +6,9 @@ create table news (
 id int primary key auto_increment,
 title varchar(255),
 content text,
-publishtime datetime );
+publishtime datetime,
+username varchar(45)
+);
 
 insert into news values (null, '1.症状：消沉绝望；', '电影处方：《小鞋子》《肖申克的救赎》。', now() );
 insert into news values (null, ' 2.症状：心理抑郁；', '电影处方：《谈谈情跳跳舞》。', now() );
