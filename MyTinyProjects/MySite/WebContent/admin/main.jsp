@@ -42,7 +42,9 @@ if(dba.createConn()) {
 				<tr>
 					<td><label><input type="checkbox" value="1" /></label></label></td>
 					<td><jsp:getProperty name="dba" property="id" /></td>
-					<td><jsp:getProperty name="dba" property="title" /></td>
+					<td><a href="../include/inc_news_content.jsp?id=<jsp:getProperty name="dba" property="id" />">
+							<jsp:getProperty name="dba" property="title" />
+						</a></td>
 					<td><jsp:getProperty name="dba" property="publishtime" /></td>
 					<td><jsp:getProperty name="dba" property="username" /></td>
 					<td><a href="#" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
