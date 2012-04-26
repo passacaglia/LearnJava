@@ -8,11 +8,18 @@ if (null == username) {
 	response.sendRedirect("login.jsp");
 }
 %>
+
+<%
+String strId = (String)request.getParameter("id");
+int id = Integer.parseInt(strId);
+
+%>
+
 <% 
 //解决 发帖 乱码问题
 request.setCharacterEncoding("utf8");
 String action = request.getParameter("action");
-if (null != action && action.equals("post")) {
+if (null != action && action.equals("edit")) {
 
 	String title = request.getParameter("title");
 	String content = request.getParameter("content");
@@ -23,36 +30,29 @@ if (null != action && action.equals("post")) {
 	String url = "jdbc:mysql://localhost:3306/mysite";
 	Connection conn = DriverManager.getConnection(url, "root", "amigo");
 
-	//为了保证插入记录和更新   新帖子的父帖   为  非叶子    一块成功,用transaction.
-	conn.setAutoCommit(false);
-	String sql = "insert into news values (null, ?, ?, now(), ?)";
-	PreparedStatement prstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 	Statement stmt = conn.createStatement();
-
-	prstmt.setString(1, title);
-	prstmt.setString(2, content);
-	prstmt.setString(3, username);
-	prstmt.executeUpdate();
-
-	ResultSet rsKey = prstmt.getGeneratedKeys();
-	rsKey.next();
-	int key = rsKey.getInt(1);
-	rsKey.close();
-
-	conn.commit();
-	conn.setAutoCommit(true);
-
+	String sql = "update news set title='" + title + "', content='" + content + "' where id=" + id;
+	stmt.execute(sql);
+	
 	stmt.close();
-	prstmt.close();
 	conn.close();
 
 	
-	response.sendRedirect("../include/inc_news_content.jsp?id=" + key);
+	response.sendRedirect("../include/inc_news_content.jsp?id=" + id);
 
 }
 
 %>
 
+
+<jsp:useBean id="dba" class="org.test.javabean.DBAccess" />
+<%
+if(dba.createConn()) {
+	String sql = "select * from news where id=" + id;
+	dba.query(sql);
+	dba.next();
+}
+%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -67,12 +67,16 @@ if (null != action && action.equals("post")) {
 <body>
 
 <div>
-	<form name="form" action="post.jsp" method="post" onsubmit="return checkdata()">
-	<input name="action" type="hidden" value="post" />
+	<form name="form" action="edit.jsp?id=<%=id %>" method="post" onsubmit="return checkdata()">
+	<input name="action" type="hidden" value="edit" />
 	<table>
 		<tr>
 			<td>标题 : </td>
-			<td><input name="title" type="text" size="72"/></td>
+			<td>
+				<input name="title" type="text" size="72" 
+						value="<jsp:getProperty name="dba" property="title" />"   >
+				</input>
+			</td>
 		</tr>
 		<tr>
 			<td></td>
@@ -80,11 +84,15 @@ if (null != action && action.equals("post")) {
 		</tr>
 		<tr>
 			<td>内容 : </td>
-			<td><textarea name="content" class="xheditor" cols="85" rows="20"  onblur="return checkdata()"></textarea></td> 
+			<td>
+				<textarea name="content" class="xheditor" cols="85" rows="20" onblur="return checkdata()">
+					<jsp:getProperty name="dba" property="title" />
+				</textarea>
+			</td> 
 		</tr>
 		<tr>
 			<td></td>
-			<td><input type="submit" value="保存"  /></td>
+			<td><input type="submit" value="submit" /></td>
 		</tr>
 	</table>
 </form>
@@ -93,7 +101,9 @@ if (null != action && action.equals("post")) {
 
 
 <%
-
+dba.closeRs();
+dba.closeStmt();
+dba.closeConn();
 %>
 </body>
 </html>
