@@ -43,6 +43,9 @@ rs.next();
               		<td><h1><%=rs.getString("title") %></h1></td>
               	</tr>
               	<tr>
+              		<td><%=rs.getString("username") %></td>
+              	</tr>
+              	<tr>
               		<td><%=rs.getString("publishtime") %></td>
               	</tr>
               	<tr>
