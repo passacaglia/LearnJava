@@ -49,7 +49,7 @@ if (null == username) {
 			<ul>
 				<li><a href="members.jsp" target="frameRight">用户管理</a></li>
 			</ul>
-			<h5>程序信息</h5>
+			<h5>其它信息</h5>
 			<ul>
 				<li><a href="#">Others</a></li>
 			</ul>

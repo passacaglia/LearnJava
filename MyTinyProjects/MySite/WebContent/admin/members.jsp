@@ -7,6 +7,16 @@ if (null == username) {
 	response.sendRedirect("login.jsp");
 }
 %>
+
+<jsp:useBean id="dba" class="org.test.javabean.DBAccess" />
+<%
+if(dba.createConn()) {
+	String sql = "select * from user";
+	dba.query(sql);
+	
+}
+%>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -36,76 +46,21 @@ if (null == username) {
 					<th width="30%">邮箱</th>
 					<th width="25%">操作</th>
 				</tr>
+<% while(dba.next()) { %>
 				<tr>
 					<td><label><input type="checkbox" value="1" /></label></label></td>
-					<td>1</td>
-					<td>administrator</td>
-					<td>thenbsp@gmail.com</td>
+					<td><jsp:getProperty name="dba" property="id" /></td>
+					<td><jsp:getProperty name="dba" property="username" /></td>
+					<td><jsp:getProperty name="dba" property="email" /></td>
 					<td><a href="#" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
 				</tr>
-				<tr>
-					<td><label><input type="checkbox" value="1" /></label></td>
-					<td>2</td>
-					<td>thenbsp</td>
-					<td>thenbsp@gmail.com</td>
-					<td><a href="#" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
-				</tr>
-				<tr>
-					<td><label><input type="checkbox" value="1" /></label></td>
-					<td>3</td>
-					<td>杨龙</td>
-					<td>26212156@qq.com</td>
-					<td><a href="#" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
-				</tr>
-				<tr>
-					<td><label><input type="checkbox" value="1" /></label></td>
-					<td>4</td>
-					<td>administrator</td>
-					<td>thenbsp@gmail.com</td>
-					<td><a href="#" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
-				</tr>
-				<tr>
-					<td><label><input type="checkbox" value="1" /></label></td>
-					<td>5</td>
-					<td>thenbsp</td>
-					<td>thenbsp@gmail.com</td>
-					<td><a href="#" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
-				</tr>
-				<tr>
-					<td><label><input type="checkbox" value="1" /></label></td>
-					<td>6</td>
-					<td>杨龙</td>
-					<td>26212156@qq.com</td>
-					<td><a href="#" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
-				</tr>
-				<tr>
-					<td><label><input type="checkbox" value="1" /></label></td>
-					<td>7</td>
-					<td>administrator</td>
-					<td>thenbsp@gmail.com</td>
-					<td><a href="#" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
-				</tr>
-				<tr>
-					<td><label><input type="checkbox" value="1" /></label></td>
-					<td>8</td>
-					<td>thenbsp</td>
-					<td>thenbsp@gmail.com</td>
-					<td><a href="#" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
-				</tr>
-				<tr>
-					<td><label><input type="checkbox" value="1" /></label></td>
-					<td>9</td>
-					<td>杨龙</td>
-					<td>26212156@qq.com</td>
-					<td><a href="#" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
-				</tr>
-				<tr>
-					<td><label><input type="checkbox" value="1" /></label></td>
-					<td>10</td>
-					<td>administrator</td>
-					<td>thenbsp@gmail.com</td>
-					<td><a href="#" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
-				</tr>
+<% } %>
+<%
+dba.closeRs();
+dba.closeStmt();
+dba.closeConn();
+%>
+				
 			</table>
 			<p class="pager">
 				<span class="fl"><input type="button" value="操作 ▼" class="bnCss" /> 每页 10 条，共分 4 页</span>

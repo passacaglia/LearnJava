@@ -27,6 +27,7 @@ public class DBAccess {
 	private String title;
 	private String publishtime;
 	private String username;
+	private String email;
 	
 
 	public boolean createConn() {
@@ -222,4 +223,15 @@ public class DBAccess {
 		return value;
 	}
 	
+	public String getEmail() {
+		String value = null;
+		try {
+			if(null != rs) {
+				value = rs.getString("email");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return value;
+	}
 }
