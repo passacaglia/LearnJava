@@ -15,6 +15,17 @@ if ((null == strId) || strId.equals("")) {
 %>
 
 <%
+String username = (String)session.getAttribute("username");
+String show = (String)request.getParameter("show");
+String edit = "";
+String link = "";
+if ((null == show) && (null != username)) {
+	edit = "../admin/edit.jsp?id=" + id;
+	link = "<a href='" + edit + "'><strong>编辑本文</strong></a>";
+}
+%>
+
+<%
 Class.forName("com.mysql.jdbc.Driver");
 String url = "jdbc:mysql://localhost/mysite?user=root&password=amigo";
 Connection conn = DriverManager.getConnection(url);
@@ -37,7 +48,9 @@ rs.next();
           <h2><span>新闻中心</span></h2>
           <div class="box_con">
             <ul>
-
+            	<li><%=link %></li>
+				<% edit=""; link=""; %>
+				
               <table>
               	<tr>
               		<td><h1><%=rs.getString("title") %></h1></td>

@@ -51,6 +51,7 @@ if ((null == strId) || strId.equals("")) {
 	        <div id="index_box">
 				<jsp:include page="include/inc_news_content.jsp">
 					<jsp:param name="id" value="<%=id %>" />
+					<jsp:param name="show" value="dont" />
 				</jsp:include>
 				
 			</div>
