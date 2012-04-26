@@ -26,6 +26,7 @@ public class DBAccess {
 	private int id;
 	private String title;
 	private String publishtime;
+	private String username;
 	
 
 	public boolean createConn() {
@@ -202,6 +203,18 @@ public class DBAccess {
 		try {
 			if(null != rs) {
 				value = pt.format(rs.getDate("publishtime"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return value;
+	}
+	
+	public String getUsername() {
+		String value = null;
+		try {
+			if(null != rs) {
+				value = rs.getString("username");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

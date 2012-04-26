@@ -34,7 +34,8 @@ if(dba.createConn()) {
 					<th width="8%">多选</th>
 					<th width="12%">ID</th>
 					<th width="25%">标题</th>
-					<th width="30%">发布时间</th>
+					<th width="18%">发布时间</th>
+					<th width="12%">发布者</th>
 					<th width="25%">操作</th>
 				</tr>
 <% while(dba.next()) { %>
@@ -43,6 +44,7 @@ if(dba.createConn()) {
 					<td><jsp:getProperty name="dba" property="id" /></td>
 					<td><jsp:getProperty name="dba" property="title" /></td>
 					<td><jsp:getProperty name="dba" property="publishtime" /></td>
+					<td><jsp:getProperty name="dba" property="username" /></td>
 					<td><a href="#" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
 				</tr>
 <% } %>
