@@ -1,14 +1,16 @@
 function checkdata() {
     var title = document.form.title.value;
+    var content = document.form.content.value;
     var length = title.length;
+    var contLen = content.length;
     if (isSsnString(title)) {
-        if ((5<=length) && (length<=60)) {
-            document.getElementById("errorTitle").innerHTML = "标题不少于5个字不多于20个字，可使用中文，英文字母，数字，下横线";
+        if ((5<=length) && (length<=60) && (contLen >=1)) {
+            document.getElementById("errorTitle").innerHTML = "标题不少于5个字不多于20个字，可使用中文，英文字母，数字，下横线。内容至少一个字。";
             return true;
         }
     } 
 
-    document.getElementById("errorTitle").innerHTML = "<font color='red'>标题不少于5个字不多于20个字，可使用中文，英文字母，数字，下横线</font>";
+    document.getElementById("errorTitle").innerHTML = "<font color='red'>标题不少于5个字不多于20个字，可使用中文，英文字母，数字，下横线。内容至少一个字。</font>";
     return false;
     
 }

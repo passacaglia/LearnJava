@@ -71,15 +71,15 @@ if (null != action && action.equals("post")) {
 	<table>
 		<tr>
 			<td>标题 : </td>
-			<td><input name="title" type="text" size="72" onblur="return checkdata()"/></td>
+			<td><input name="title" type="text" size="72"/></td>
 		</tr>
 		<tr>
 			<td></td>
-			<td><span id="errorTitle">标题不少于5个字不多于20个字，可使用中文，英文字母，数字，下横线</span></td>
+			<td><span id="errorTitle">标题不少于5个字不多于20个字，可使用中文，英文字母，数字，下横线。内容至少一个字。</span></td>
 		</tr>
 		<tr>
 			<td>内容 : </td>
-			<td><textarea name="content" class="xheditor" cols="85" rows="20"></textarea></td> 
+			<td><textarea name="content" class="xheditor" cols="85" rows="20"  onblur="return checkdata()"></textarea></td> 
 		</tr>
 		<tr>
 			<td></td>
