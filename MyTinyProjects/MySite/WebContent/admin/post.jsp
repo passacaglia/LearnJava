@@ -25,12 +25,13 @@ if (null != action && action.equals("post")) {
 
 	//为了保证插入记录和更新   新帖子的父帖   为  非叶子    一块成功,用transaction.
 	conn.setAutoCommit(false);
-	String sql = "insert into news values (null, ?, ?, now())";
+	String sql = "insert into news values (null, ?, ?, now(), ?)";
 	PreparedStatement prstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 	Statement stmt = conn.createStatement();
 
 	prstmt.setString(1, title);
 	prstmt.setString(2, content);
+	prstmt.setString(3, username);
 	prstmt.executeUpdate();
 
 	ResultSet rsKey = prstmt.getGeneratedKeys();
