@@ -15,7 +15,7 @@ if (null == username) {
 	</head>
 	<frameset rows="60px,*,24px" cols="*" name="frameAll" id="frameAll" frameborder="0" framespacing="0">
 		<!--框架上部分-->
-		<frame src="top.jsp" name="frameTop" id="frameTop" scrolling="no" noresize />
+		<frame src="top.jsp?username=<%=username %>" name="frameTop" id="frameTop" scrolling="no" noresize />
 		<!--框架右侧和左侧-->
 		<frameset cols="180px,*" name="frameMain" id="frameMain" frameborder="0" framespacing="0" >
 			<!--框架左侧-->

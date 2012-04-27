@@ -11,7 +11,7 @@ if ((null != error) && error.equals("1")) {
 <%
 String username = (String)session.getAttribute("username");
 if (null != username) {
-	response.sendRedirect("welcome.jsp");
+	response.sendRedirect("welcome.jsp?username=" + username);
 }
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
