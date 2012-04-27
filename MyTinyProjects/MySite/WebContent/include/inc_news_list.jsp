@@ -44,7 +44,7 @@ String url = "jdbc:mysql://localhost/mysite?user=root&password=amigo";
 Connection conn = DriverManager.getConnection(url);
 
 Statement stmtCount = conn.createStatement();
-String sql = "select * from news order by publishtime desc";
+String sql = "select count(*) from news order by publishtime desc";
 ResultSet rsCount = stmtCount.executeQuery(sql);
 
 int totalRecords = 0;
@@ -56,6 +56,8 @@ int totalPages = totalRecords / pageSize == 0 ? (totalRecords/pageSize) : (total
 if (0 == totalPages) {
 	totalPages = 1;
 }
+System.out.println(totalRecords);
+System.out.println(totalPages);
 if (pageNo > totalPages) {
 	pageNo = totalPages;
 }

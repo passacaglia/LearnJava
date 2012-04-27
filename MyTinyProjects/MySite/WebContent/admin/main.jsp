@@ -32,7 +32,7 @@ int totalRecords = 1;
 int totalPages = 1;
 int pageSize = 20;
 if(dba.createConn()) {
-	String sql = "select * from news order by publishtime desc";
+	String sql = "select count(*) from news order by publishtime desc";
 	dba.query(sql);
 	ResultSet rsCount = dba.getRs();
 	if (rsCount.next()) {
