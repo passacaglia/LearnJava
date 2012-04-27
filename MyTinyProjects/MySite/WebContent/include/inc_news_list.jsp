@@ -51,6 +51,9 @@ rsCount.next();
 //total records --> total pages
 int totalRecords = rsCount.getInt(1);
 int totalPages = totalRecords / pageSize == 0 ? (totalRecords/pageSize) : (totalRecords/pageSize + 1);
+if (0 == totalPages) {
+	totalPages = 1;
+}
 if (pageNo > totalPages) {
 	pageNo = totalPages;
 }
