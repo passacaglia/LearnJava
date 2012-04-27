@@ -52,7 +52,7 @@ if(dba.createConn()) {
 					<td><jsp:getProperty name="dba" property="id" /></td>
 					<td><jsp:getProperty name="dba" property="username" /></td>
 					<td><jsp:getProperty name="dba" property="email" /></td>
-					<td><a href="#" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
+					<td><a href="#" class="edit">编辑</a> | <a href="delUser.jsp?id=<%=dba.getId() %>" class="delete">删除</a></td>
 				</tr>
 <% } %>
 <%
