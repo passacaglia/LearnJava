@@ -32,7 +32,7 @@ if(dba.createConn()) {
 			<div class="menu_type">
 				<ul>
 					<li><a href="#">用户列表</a></li>
-					<li><a href="#">添加新用户</a></li>
+					<li><a href="addUser.jsp">添加新用户</a></li>
 					<li><a href="#">已禁止用户</a></li>
 					<li><a href="#">用户权限设置</a></li>
 				</ul>

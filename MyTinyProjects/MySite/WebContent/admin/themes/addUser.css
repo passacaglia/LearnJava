@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+ul li {
+	list-style-type: none;
+}
+li {
+	padding: 3px;
+	border: 0.5px dotted #CCC;
+}
+body {
+	font-family: Verdana;
+	font-size: 14px;
+	line-height: 1.5px;
+	color: #333;
+	text-decoration: none;
+	background-color: #CCC;
+}
+#addUser form ul li input {
+	border: 1px solid #69F;
+}
+#addUser {
+	display: block;
+	margin-top: 50px;
+	margin-right: auto;
+	margin-bottom: auto;
+	margin-left: 50px;
+}
