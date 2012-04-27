@@ -25,6 +25,7 @@ public class DBAccess {
 	
 	private int id;
 	private String title;
+	private String content;
 	private String publishtime;
 	private String username;
 	private String email;
@@ -191,6 +192,18 @@ public class DBAccess {
 		try {
 			if(null != rs) {
 				value = rs.getString("title");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return value;
+	}
+	
+	public String getContent() {
+		String value = null;
+		try {
+			if(null != rs) {
+				value = rs.getString("content");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

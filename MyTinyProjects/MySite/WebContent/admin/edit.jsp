@@ -12,13 +12,12 @@ if (null == username) {
 <%
 String strId = (String)request.getParameter("id");
 int id = Integer.parseInt(strId);
-
+String action = request.getParameter("action");
 %>
 
 <% 
 //解决 发帖 乱码问题
 request.setCharacterEncoding("utf8");
-String action = request.getParameter("action");
 if (null != action && action.equals("edit")) {
 
 	String title = request.getParameter("title");
@@ -40,6 +39,21 @@ if (null != action && action.equals("edit")) {
 	
 	response.sendRedirect("../include/inc_news_content.jsp?id=" + id);
 
+} else if (null != action && action.equals("del")) {
+	
+	Class.forName("com.mysql.jdbc.Driver");
+	String url = "jdbc:mysql://localhost:3306/mysite";
+	Connection conn = DriverManager.getConnection(url, "root", "amigo");
+
+	Statement stmt = conn.createStatement();
+	String sql = "delete from news where id=" + id;
+	stmt.executeUpdate(sql);
+	
+	stmt.close();
+	conn.close();
+
+	response.sendRedirect("main.jsp");
+
 }
 
 %>
@@ -50,8 +64,7 @@ if (null != action && action.equals("edit")) {
 if(dba.createConn()) {
 	String sql = "select * from news where id=" + id;
 	dba.query(sql);
-	dba.next();
-}
+	if (dba.next()) {
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -74,7 +87,7 @@ if(dba.createConn()) {
 			<td>标题 : </td>
 			<td>
 				<input name="title" type="text" size="72" 
-						value="<jsp:getProperty name="dba" property="title" />"   >
+						value="<%=dba.getTitle() %>"   >
 				</input>
 			</td>
 		</tr>
@@ -86,7 +99,7 @@ if(dba.createConn()) {
 			<td>内容 : </td>
 			<td>
 				<textarea name="content" class="xheditor" cols="85" rows="20" onblur="return checkdata()">
-					<jsp:getProperty name="dba" property="title" />
+					<%=dba.getContent() %>
 				</textarea>
 			</td> 
 		</tr>
@@ -100,7 +113,11 @@ if(dba.createConn()) {
 </div>
 
 
-<%
+<%	
+	}
+}
+
+
 dba.closeRs();
 dba.closeStmt();
 dba.closeConn();

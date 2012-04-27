@@ -47,7 +47,7 @@ if(dba.createConn()) {
 						</a></td>
 					<td><jsp:getProperty name="dba" property="publishtime" /></td>
 					<td><jsp:getProperty name="dba" property="username" /></td>
-					<td><a href="edit.jsp?id=<%=dba.getId() %>" class="edit">编辑</a> | <a href="#" class="delete">删除</a></td>
+					<td><a href="edit.jsp?id=<%=dba.getId() %>" class="edit">编辑</a> | <a href="edit.jsp?id=<%=dba.getId() %>&action=del" class="delete">删除</a></td>
 				</tr>
 <% } %>
 					
