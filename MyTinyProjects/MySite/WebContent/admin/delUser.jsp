@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"  %>
+    pageEncoding="UTF-8" import="java.io.*" %>
 <%
 String username = (String)session.getAttribute("username");
 if (null == username) {
@@ -11,18 +11,18 @@ if (null == username) {
 <%
 int id = Integer.parseInt((String)request.getParameter("id"));
 String str = "";
-if (1 == id) {
-	str = "<font color='red'>You should not delete admin.</font>";
-	return;
-}
-String sql = "delete from user where id=" + id;
-if (dba.createConn()) {
-	if (dba.update(sql)) {
-		dba.closeStmt();
-		dba.closeConn();
-		str = "删除成功！";
+if (1 != id) {
+	String sql = "delete from user where id=" + id;
+	if (dba.createConn()) {
+		if (dba.update(sql)) {
+			dba.closeStmt();
+			dba.closeConn();
+			str = "删除成功！";
+		}
 	}
 }
+str = "<font color='red'>admin不能被删除</font>";
+
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
