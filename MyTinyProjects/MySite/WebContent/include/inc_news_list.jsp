@@ -56,8 +56,6 @@ int totalPages = totalRecords / pageSize == 0 ? (totalRecords/pageSize) : (total
 if (0 == totalPages) {
 	totalPages = 1;
 }
-System.out.println(totalRecords);
-System.out.println(totalPages);
 if (pageNo > totalPages) {
 	pageNo = totalPages;
 }
