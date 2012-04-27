@@ -94,6 +94,7 @@ while(rs.next()) {
             <jsp:include page="inc_sub/inc_selector.jsp">
             	<jsp:param name="pageNo" value="<%=pageNo %>" />
             	<jsp:param name="totalPages" value="<%=totalPages %>" />
+            	<jsp:param name="whoUseMe" value="news_list.jsp" />
             </jsp:include>
                         
           </div>

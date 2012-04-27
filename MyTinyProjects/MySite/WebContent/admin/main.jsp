@@ -8,11 +8,52 @@ if (null == username) {
 }
 %>
 <jsp:useBean id="dba" class="org.test.javabean.DBAccess" />
+
 <%
+//get & set pageNo
+String strPageNo = request.getParameter("pageNo");
+int pageNo;
+if ((null == strPageNo) || strPageNo.equals("")) {
+	pageNo = 1;
+} else {
+	try {
+		 pageNo = Integer.parseInt(strPageNo.trim());
+	} catch(NumberFormatException e) {
+		pageNo = 1;
+	}
+	if (pageNo <= 0) {
+		pageNo = 1;
+	}
+}
+
+%>
+<%
+int totalRecords = 1;
+int totalPages = 1;
+int pageSize = 20;
 if(dba.createConn()) {
 	String sql = "select * from news order by publishtime desc";
 	dba.query(sql);
-	
+	ResultSet rsCount = dba.getRs();
+	if (rsCount.next()) {
+		totalRecords = rsCount.getInt(1);
+		totalPages = totalRecords / pageSize == 0 ? (totalRecords/pageSize) : (totalRecords/pageSize + 1);
+		if (0 == totalPages) {
+			totalPages = 1;
+		}
+		if (pageNo > totalPages) {
+			pageNo = totalPages;
+		}
+		//starts
+		int startPos = (pageNo-1) * pageSize;
+
+		//按分页的方式查询。
+		String sql2 = "select * from news order by publishtime desc limit " + startPos + ", " + pageSize;
+		dba.query(sql2);
+	} else {
+		return;
+	}
+
 }
 %>
 	
@@ -27,8 +68,15 @@ if(dba.createConn()) {
 		<script type="text/javascript" src="scripts/common.js"></script>
 	</head>
 	<body>
-		<div id="main">
+		
+			<div id="main">
 			
+			<jsp:include page="../include/inc_sub/inc_selector.jsp">
+            	<jsp:param name="pageNo" value="<%=pageNo %>" />
+            	<jsp:param name="totalPages" value="<%=totalPages %>" />
+            	<jsp:param name="whoUseMe" value="main.jsp" />
+        	</jsp:include>
+				
 			<table border="0px" cellpadding="0px" cellspacing="0px">
 				<tr>
 					<th width="8%">多选</th>
@@ -50,16 +98,22 @@ if(dba.createConn()) {
 					<td><a href="edit.jsp?id=<%=dba.getId() %>" class="edit">编辑</a> | <a href="edit.jsp?id=<%=dba.getId() %>&action=del" class="delete">删除</a></td>
 				</tr>
 <% } %>
-					
-					
-					
-				
+		</table>
+		
+		<jsp:include page="../include/inc_sub/inc_selector.jsp">
+            	<jsp:param name="pageNo" value="<%=pageNo %>" />
+            	<jsp:param name="totalPages" value="<%=totalPages %>" />
+            	<jsp:param name="whoUseMe" value="main.jsp" />
+        </jsp:include>
+		
+		</div>
+		
+		
+           
+	</body>
 <%
 dba.closeRs();
 dba.closeStmt();
 dba.closeConn();
 %>
-			</table>
-		</div>
-	</body>
 </html>
