@@ -47,9 +47,11 @@ Statement stmtCount = conn.createStatement();
 String sql = "select * from news order by publishtime desc";
 ResultSet rsCount = stmtCount.executeQuery(sql);
 
-rsCount.next();
-//total records --> total pages
-int totalRecords = rsCount.getInt(1);
+int totalRecords = 0;
+if (rsCount.next()) {
+	//total records --> total pages
+	totalRecords = rsCount.getInt(1);
+}
 int totalPages = totalRecords / pageSize == 0 ? (totalRecords/pageSize) : (totalRecords/pageSize + 1);
 if (0 == totalPages) {
 	totalPages = 1;

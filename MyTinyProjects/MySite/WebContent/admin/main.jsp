@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.sql.*" %>
+    pageEncoding="UTF-8" import="java.sql.*" import="java.io.*" %>
 <%
 String username = (String)session.getAttribute("username");
 if (null == username) {
@@ -51,7 +51,10 @@ if(dba.createConn()) {
 		String sql2 = "select * from news order by publishtime desc limit " + startPos + ", " + pageSize;
 		dba.query(sql2);
 	} else {
-		return;
+		PrintWriter pw = response.getWriter();
+		pw.println("<font color='red'>Sorry, there is no article in your db.</font>");
+		pw.println("<font color='red'>Please write some thing first.</font>");
+		pw.println("<a href='post.jsp'>Click me to write an article.</a>");
 	}
 
 }
