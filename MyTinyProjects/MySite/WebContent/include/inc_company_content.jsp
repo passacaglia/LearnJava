@@ -31,7 +31,7 @@ String url = "jdbc:mysql://localhost/mysite?user=root&password=amigo";
 Connection conn = DriverManager.getConnection(url);
 
 Statement stmt = conn.createStatement();
-String sql = "select * from news where id = " + id;
+String sql = "select * from company where id = " + id;
 ResultSet rs = stmt.executeQuery(sql);
 rs.next();
 %>    
@@ -45,7 +45,7 @@ rs.next();
 <body>
 
         <div class="box">
-          <h2><span>新闻中心</span></h2>
+          <h2><span>企业介绍</span></h2>
           <div class="box_con">
             <ul>
             	<li><%=link %></li>

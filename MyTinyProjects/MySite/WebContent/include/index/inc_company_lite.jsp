@@ -15,7 +15,7 @@ String url = "jdbc:mysql://localhost/mysite?user=root&password=amigo";
 Connection conn = DriverManager.getConnection(url);
 
 Statement stmt = conn.createStatement();
-String sql = "select * from news order by publishtime desc";
+String sql = "select * from company order by publishtime desc";
 ResultSet rs = stmt.executeQuery(sql);
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -27,7 +27,7 @@ ResultSet rs = stmt.executeQuery(sql);
 <body>
 
         <div class="box">
-          <h2><a class='more' href='news_list.jsp'>更多..</a><span>新闻中心</span></h2>
+          <h2><a class='more' href='company_list.jsp'>更多..</a><span>企业介绍</span></h2>
           <div class="box_con">
             <ul>
 <%
@@ -36,7 +36,7 @@ while(rs.next()) {
 	count--;
 	date = pt.format(rs.getDate("publishtime"));
 %>
-              <li><a href="news_content.jsp?id=<%= rs.getInt("id") %>"><%=rs.getString("title") %></a><span><%=date %></span></li>
+              <li><a href="company_content.jsp?id=<%= rs.getInt("id") %>"><%=rs.getString("title") %></a><span><%=date %></span></li>
 <% 
 	if (0 == count) {
 		break;

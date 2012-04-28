@@ -44,7 +44,7 @@ String url = "jdbc:mysql://localhost/mysite?user=root&password=amigo";
 Connection conn = DriverManager.getConnection(url);
 
 Statement stmtCount = conn.createStatement();
-String sql = "select count(*) from news order by publishtime desc";
+String sql = "select count(*) from company order by publishtime desc";
 ResultSet rsCount = stmtCount.executeQuery(sql);
 
 int totalRecords = 0;
@@ -64,7 +64,7 @@ int startPos = (pageNo-1) * pageSize;
 
 //按分页的方式查询。
 Statement stmt = conn.createStatement();
-String sql2 = "select * from news order by publishtime desc limit " + startPos + ", " + pageSize;
+String sql2 = "select * from company order by publishtime desc limit " + startPos + ", " + pageSize;
 ResultSet rs = stmt.executeQuery(sql2);
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -76,7 +76,7 @@ ResultSet rs = stmt.executeQuery(sql2);
 <body>
 
         <div class="box">
-          <h2><span>新闻中心</span></h2>
+          <h2><span>企业介绍</span></h2>
           <div class="box_con">
             <ul>
 <% 
@@ -84,7 +84,7 @@ while(rs.next()) {
 	count--;//只有index.jsp传过来的是8,大于0。有可能通过自减，到0.
 	date = pt.format(rs.getDate("publishtime"));
 %>
-              <li><a href="news_content.jsp?id=<%=rs.getInt("id") %>"><%=rs.getString("title") %></a><span><%=date %></span></li>
+              <li><a href="company_content.jsp?id=<%=rs.getInt("id") %>"><%=rs.getString("title") %></a><span><%=date %></span></li>
 <% 
 	if (0 == count) {
 		break;
@@ -96,7 +96,7 @@ while(rs.next()) {
             <jsp:include page="inc_sub/inc_selector.jsp">
             	<jsp:param name="pageNo" value="<%=pageNo %>" />
             	<jsp:param name="totalPages" value="<%=totalPages %>" />
-            	<jsp:param name="whoUseMe" value="news_list.jsp" />
+            	<jsp:param name="whoUseMe" value="company_list.jsp" />
             </jsp:include>
                         
           </div>
