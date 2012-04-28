@@ -53,7 +53,8 @@ if (dba.createConn()) {
 	        	<div class="box">
          			  <h2><span>联系我们</span></h2>
 			          <div class="box_con">
-							<jsp:getProperty name="dba" property="title" />
+							<h3><jsp:getProperty name="dba" property="title" /></h3>
+							
 							<jsp:getProperty name="dba" property="content" />
 			          </div>
         		</div>
