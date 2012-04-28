@@ -2,18 +2,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 
-<%!
-String more = ""; 
+<%
+SimpleDateFormat pt = new SimpleDateFormat("MM-dd");
+String date;
 %>
 
 <%
-String who = request.getParameter("who");
-if ((null != who) && ("" != who) && who.equals("index")) {
-	more = "<a class='more' href='news_list.jsp'>更多..</a>";
-}
-%>
+Class.forName("com.mysql.jdbc.Driver");
+String url = "jdbc:mysql://localhost/mysite?user=root&password=amigo";
+Connection conn = DriverManager.getConnection(url);
 
+Statement stmt = conn.createStatement();
+String sql = "select * from news order by publishtime desc";
+ResultSet rs = stmt.executeQuery(sql);
+%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -22,21 +26,33 @@ if ((null != who) && ("" != who) && who.equals("index")) {
 </head>
 <body>
 
-        <div class="box box1">
-          <h2><%=more %><% more=""; %><span>企业介绍</span></h2>
+        <div class="box">
+          <h2><a class='more' href='news_list.jsp'>更多..</a><span>新闻中心</span></h2>
           <div class="box_con">
             <ul>
-              <li><a href="#">纯CSS实现三列DIV等高布局</a></li>
-              <li><a href="#">HTML元素的ID和Name属性的区别</a></li>
-              <li><a href="#">完美兼容ie6,ie7,ie8以及firefox的css透明滤镜</a></li>
-              <li><a href="#">DIV+CSS实现放大镜效果的分页样式</a></li>
-              <li><a href="#">javascript为FF设置首页</a></li>
-              <li><a href="#">复制到系统剪贴板之IE,ff兼容版</a></li>
-              <li><a href="#">DIV+CSS实现放大镜效果的分页样式</a></li>
+<%
+int count = 8;//不能写到全局变量里。(<%!)
+while(rs.next()) { 
+	count--;
+	date = pt.format(rs.getDate("publishtime"));
+%>
+              <li><a href="news_content.jsp?id=<%= rs.getInt("id") %>"><%=rs.getString("title") %></a><span><%=date %></span></li>
+<% 
+	if (0 == count) {
+		break;
+	}
+} 
+%>
             </ul>
+            
           </div>
         </div>
 
 
+<%
+rs.close();
+stmt.close();
+conn.close();
+%>
 </body>
 </html>
