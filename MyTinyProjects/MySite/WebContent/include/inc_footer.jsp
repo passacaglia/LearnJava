@@ -13,7 +13,7 @@
   
   <div id="footer">
     <dl>
-    <dt><a href="#">关于我们</a>　||　<a href="#">产品目录</a>　||　<a href="#">联系我们</a>　||　<a href="#">友情链接</a>　||　<a href="#">反馈问题</a>　||　<a href="#">相关合作</a></dt>
+    <dt><a href="aboutUs.jsp">关于我们</a>　||　<a href="product_list.jsp">产品目录</a>　||　<a href="contactUs.jsp">联系我们</a>　||　<a href="#">友情链接</a>　||　<a href="#">反馈问题</a>　||　<a href="#">相关合作</a></dt>
       <dd>Copyright &copy; 2012 www.test.cn   All Rights Reserved<br />
             XXX 版权所有  鲁ICP备00000000号</dd>
     </dl>
