@@ -34,7 +34,7 @@ if ((null == strId) || strId.equals("")) {
 	    	    <li><a href="index.jsp"><span>首页</span></a></li>
 		        <li><a href="news_list.jsp"><span>企业新闻</span></a></li>
 		        <li><a href="company_list.jsp" id="nav_current"><span>企业简介</span></a></li>
-	        	<li><a href="#"><span>产品展厅</span></a></li>
+	        	<li><a href="product_list.jsp"><span>产品展厅</span></a></li>
 	        	<li><a href="#"><span>订单跟踪</span></a></li>
 	        	<li><a href="contactUs.jsp"><span>联系我们</span></a></li>
 			</ul>

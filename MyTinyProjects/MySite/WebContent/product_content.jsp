@@ -33,8 +33,8 @@ if ((null == strId) || strId.equals("")) {
 			<ul>
 	    	    <li><a href="index.jsp"><span>首页</span></a></li>
 		        <li><a href="news_list.jsp"><span>企业新闻</span></a></li>
-		        <li><a href="company_list.jsp" id="nav_current"><span>企业简介</span></a></li>
-	        	<li><a href="#"><span>产品展厅</span></a></li>
+		        <li><a href="company_list.jsp"><span>企业简介</span></a></li>
+	        	<li><a href="product_list.jsp" id="nav_current"><span>产品展厅</span></a></li>
 	        	<li><a href="#"><span>订单跟踪</span></a></li>
 	        	<li><a href="contactUs.jsp"><span>联系我们</span></a></li>
 			</ul>
@@ -49,7 +49,7 @@ if ((null == strId) || strId.equals("")) {
 	  	
 	    <div id="main">
 	        <div id="index_box">
-				<jsp:include page="include/inc_company_content.jsp">
+				<jsp:include page="include/inc_product_content.jsp">
 					<jsp:param name="id" value="<%=id %>" />
 					<jsp:param name="show" value="dont" />
 				</jsp:include>

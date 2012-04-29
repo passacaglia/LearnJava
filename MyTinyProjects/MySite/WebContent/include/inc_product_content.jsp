@@ -31,7 +31,7 @@ String url = "jdbc:mysql://localhost/mysite?user=root&password=amigo";
 Connection conn = DriverManager.getConnection(url);
 
 Statement stmt = conn.createStatement();
-String sql = "select * from company where id = " + id;
+String sql = "select * from product where id = " + id;
 ResultSet rs = stmt.executeQuery(sql);
 rs.next();
 %>    
