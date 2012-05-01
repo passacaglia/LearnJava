@@ -9,10 +9,10 @@ SimpleDateFormat pt = new SimpleDateFormat("MM-dd");
 String date;
 %>
 
+<jsp:useBean id="dba" class="org.test.javabean.DBAccess" />
 <%
-Class.forName("com.mysql.jdbc.Driver");
-String url = "jdbc:mysql://localhost/mysite?user=root&password=amigo";
-Connection conn = DriverManager.getConnection(url);
+dba.createConn();
+Connection conn = dba.getConn();
 
 Statement stmt = conn.createStatement();
 String sql = "select * from news order by publishtime desc";
@@ -53,6 +53,7 @@ while(rs.next()) {
 rs.close();
 stmt.close();
 conn.close();
+dba.closeConn();
 %>
 </body>
 </html>
