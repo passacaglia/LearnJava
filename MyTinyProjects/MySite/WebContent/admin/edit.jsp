@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
+<jsp:useBean id="dba" class="org.test.javabean.DBAccess" />
 <%
 String username = (String)session.getAttribute("username");
 if (null == username) {
@@ -25,9 +26,8 @@ if (null != action && action.equals("edit")) {
 	//换行的问题，这样解决。
 	content = content.replaceAll("\n", "<br />");
 
-	Class.forName("com.mysql.jdbc.Driver");
-	String url = "jdbc:mysql://localhost:3306/mysite";
-	Connection conn = DriverManager.getConnection(url, "root", "amigo");
+	dba.createConn();
+	Connection conn = dba.getConn();
 
 	Statement stmt = conn.createStatement();
 	String sql = "update news set title='" + title + "', content='" + content + "' where id=" + id;
@@ -35,15 +35,14 @@ if (null != action && action.equals("edit")) {
 	
 	stmt.close();
 	conn.close();
-
+	dba.closeConn();
 	
 	response.sendRedirect("../include/inc_news_content.jsp?id=" + id);
 
 } else if (null != action && action.equals("del")) {
 	
-	Class.forName("com.mysql.jdbc.Driver");
-	String url = "jdbc:mysql://localhost:3306/mysite";
-	Connection conn = DriverManager.getConnection(url, "root", "amigo");
+	dba.createConn();
+	Connection conn = dba.getConn();
 
 	Statement stmt = conn.createStatement();
 	String sql = "delete from news where id=" + id;
@@ -51,6 +50,7 @@ if (null != action && action.equals("edit")) {
 	
 	stmt.close();
 	conn.close();
+	dba.closeConn();
 
 	response.sendRedirect("main.jsp");
 
@@ -59,7 +59,7 @@ if (null != action && action.equals("edit")) {
 %>
 
 
-<jsp:useBean id="dba" class="org.test.javabean.DBAccess" />
+
 <%
 if(dba.createConn()) {
 	String sql = "select * from news where id=" + id;

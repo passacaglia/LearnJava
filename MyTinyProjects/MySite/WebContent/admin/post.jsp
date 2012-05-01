@@ -8,7 +8,9 @@ if (null == username) {
 	response.sendRedirect("login.jsp");
 }
 %>
-<% 
+<jsp:useBean id="dba" class="org.test.javabean.DBAccess" />
+<%
+
 //解决 发帖 乱码问题
 request.setCharacterEncoding("utf8");
 String action = request.getParameter("action");
@@ -19,9 +21,8 @@ if (null != action && action.equals("post")) {
 	//换行的问题，这样解决。
 	content = content.replaceAll("\n", "<br />");
 
-	Class.forName("com.mysql.jdbc.Driver");
-	String url = "jdbc:mysql://localhost:3306/mysite";
-	Connection conn = DriverManager.getConnection(url, "root", "amigo");
+	dba.createConn();
+	Connection conn = dba.getConn();
 
 	//为了保证插入记录和更新   新帖子的父帖   为  非叶子    一块成功,用transaction.
 	conn.setAutoCommit(false);
@@ -45,7 +46,7 @@ if (null != action && action.equals("post")) {
 	stmt.close();
 	prstmt.close();
 	conn.close();
-
+	dba.closeConn();
 	
 	response.sendRedirect("../include/inc_news_content.jsp?id=" + key);
 
