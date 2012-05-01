@@ -25,6 +25,7 @@ if (null != action && action.equals("edit")) {
 	String content = request.getParameter("content");
 	//换行的问题，这样解决。
 	content = content.replaceAll("\n", "<br />");
+	content = content.replaceAll("'", "''");
 
 	dba.createConn();
 	Connection conn = dba.getConn();
