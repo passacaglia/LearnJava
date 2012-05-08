@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 import javax.swing.*;
 
-public class EmailSpider_Swing {
+public class FunctionalTools {
 	
 	private static int posX = 400;
 	private static int posY = 200;
@@ -19,7 +19,7 @@ public class EmailSpider_Swing {
 	
 
 	public static void main(String[] args) {
-		new EmailSpider_Swing().launch();
+		new FunctionalTools().launch();
 	}
 
 	private void launch() {
