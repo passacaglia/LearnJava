@@ -20,6 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.GridLayout;
 
 public class ToPlainText {
 
@@ -27,7 +28,7 @@ public class ToPlainText {
 
 	TextArea textArea = null;
 	ActionMonitor am = new ActionMonitor();
-	
+	MouseMonitor mm = new MouseMonitor();
 	
 	/**
 	 * Launch the application.
@@ -57,34 +58,35 @@ public class ToPlainText {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 600, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.NORTH);
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-		JLabel label = new JLabel("*********");
-		panel.add(label);
+		panel.setLayout(new GridLayout(5, 5, 0, 0));
+		panel.addMouseListener(mm);
 		
 		JButton btnTransfer = new JButton("ToPlainText");
-		btnTransfer.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				Clipboard sysc = Toolkit.getDefaultToolkit().getSystemClipboard();
-				String s = getClipboardText(sysc);
-				String s2 = s.replaceAll("\\s", "");
-				textArea.setText(s2);
-				setClipboardText(sysc, s2);
-			}
-		});
 		btnTransfer.setToolTipText("¸Éµô  ¼ôÇÐ°å  ÖÐµÄ  'whitespace character'");
+		btnTransfer.setActionCommand("btnTransfer");
 		btnTransfer.addActionListener(am);
+		
+		JLabel label_4 = new JLabel("*********");
+		panel.add(label_4);
 		panel.add(btnTransfer);
 		
-		JLabel label_1 = new JLabel("*********");
+		JLabel label_1 = new JLabel("×ó¼ü£º¸Éµô  ¼ôÇÐ°å  ÖÐµÄ  'whitespace character'");
 		panel.add(label_1);
+		
+		JButton btnTptExceptn = new JButton("TPT except \"\\n\"");
+		btnTptExceptn.setActionCommand("btnTptExceptn");
+		btnTptExceptn.setToolTipText("¸Éµô  ¼ôÇÐ°å  ÖÐµÄ  'whitespace character'£¬³ýÁË»»ÐÐ·û¡£");
+		btnTptExceptn.addActionListener(am);
+		panel.add(btnTptExceptn);
+		
+		JLabel label_2 = new JLabel("ÓÒ¼ü£º¸Éµô  ¼ôÇÐ°å  ÖÐµÄ  'whitespace character'£¬³ýÁË»»ÐÐ·û¡£");
+		panel.add(label_2);
 		
 		String s = "";
 		textArea = new TextArea(s, 80, 180, TextArea.SCROLLBARS_VERTICAL_ONLY);
@@ -98,16 +100,44 @@ public class ToPlainText {
 			/*String s = textArea.getText();
 			s = s.replaceAll("\\s", "");
 			textArea.setText(s);*/
+			String str = e.getActionCommand();
 			
 			Clipboard sysc = Toolkit.getDefaultToolkit().getSystemClipboard();
 			String s = getClipboardText(sysc);
-			String s2 = s.replaceAll("\\s", "");
+			String s2 = null;
+			if (str.equals("btnTransfer")) {
+				s2 = s.replaceAll("\\s", "");
+			} else if (str.equals("btnTptExceptn")) {
+				s2 = s.replaceAll("[\\s&&[^\\n]]", "");
+			}
 			textArea.setText(s2);
 			setClipboardText(sysc, s2);
+			s2 = null;
 		}
 
 	}
 
+	
+	private class MouseMonitor extends MouseAdapter {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			int i = e.getButton();
+			
+			Clipboard sysc = Toolkit.getDefaultToolkit().getSystemClipboard();
+			String s = getClipboardText(sysc);
+			String s2 = null;
+			if (1 == i) {
+				s2 = s.replaceAll("\\s", "");
+			} else if (3 == i) {
+				s2 = s.replaceAll("[\\s&&[^\\n]]", "");
+			}
+			textArea.setText(s2);
+			setClipboardText(sysc, s2);
+			s2 = null;
+		}
+	}
+	
+	
 	private String getClipboardText(Clipboard clip){
 		try {
 			
