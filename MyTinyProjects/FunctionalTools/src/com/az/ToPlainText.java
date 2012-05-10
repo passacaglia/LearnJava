@@ -18,6 +18,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ToPlainText {
 
@@ -67,6 +69,16 @@ public class ToPlainText {
 		panel.add(label);
 		
 		JButton btnTransfer = new JButton("ToPlainText");
+		btnTransfer.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Clipboard sysc = Toolkit.getDefaultToolkit().getSystemClipboard();
+				String s = getClipboardText(sysc);
+				String s2 = s.replaceAll("\\s", "");
+				textArea.setText(s2);
+				setClipboardText(sysc, s2);
+			}
+		});
 		btnTransfer.setToolTipText("干掉  剪切板  中的  'whitespace character'");
 		btnTransfer.addActionListener(am);
 		panel.add(btnTransfer);
@@ -93,35 +105,34 @@ public class ToPlainText {
 			textArea.setText(s2);
 			setClipboardText(sysc, s2);
 		}
-		
-		private String getClipboardText(Clipboard clip){
-			try {
-				
-				// 获取剪切板中的内容
-				Transferable clipT = clip.getContents(null);
-				if (clipT != null) {
-					
-				    // 检查内容是否是文本类型
-					if (clipT.isDataFlavorSupported(DataFlavor.stringFlavor)) {
-						return (String)clipT.getTransferData(DataFlavor.stringFlavor);
-					}
-				 }
-				  
-			} catch (UnsupportedFlavorException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			return null;  
-		}
-		
-		private void setClipboardText(Clipboard clip, String writeMe) {
-			Transferable tText = new StringSelection(writeMe);
-			clip.setContents(tText, null);
-		} 
 
 	}
 
+	private String getClipboardText(Clipboard clip){
+		try {
+			
+			// 获取剪切板中的内容
+			Transferable clipT = clip.getContents(null);
+			if (clipT != null) {
+				
+			    // 检查内容是否是文本类型
+				if (clipT.isDataFlavorSupported(DataFlavor.stringFlavor)) {
+					return (String)clipT.getTransferData(DataFlavor.stringFlavor);
+				}
+			 }
+			  
+		} catch (UnsupportedFlavorException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;  
+	}
+	
+	private void setClipboardText(Clipboard clip, String writeMe) {
+		Transferable tText = new StringSelection(writeMe);
+		clip.setContents(tText, null);
+	}
 }
 
 
