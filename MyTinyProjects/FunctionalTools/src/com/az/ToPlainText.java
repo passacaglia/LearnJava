@@ -70,21 +70,22 @@ public class ToPlainText {
 		btnTransfer.setToolTipText("干掉  剪切板  中的  'whitespace character'");
 		btnTransfer.setActionCommand("btnTransfer");
 		btnTransfer.addActionListener(am);
+		//panel.add(btnTransfer);
 		
 		JLabel label_4 = new JLabel("*********");
 		panel.add(label_4);
-		panel.add(btnTransfer);
 		
-		JLabel label_1 = new JLabel("左键：干掉  剪切板  中的  'whitespace character'");
+		
+		JLabel label_1 = new JLabel("左键：点我，干掉  剪切板  中的  空格");
 		panel.add(label_1);
 		
 		JButton btnTptExceptn = new JButton("TPT except \"\\n\"");
 		btnTptExceptn.setActionCommand("btnTptExceptn");
 		btnTptExceptn.setToolTipText("干掉  剪切板  中的  'whitespace character'，除了换行符。");
 		btnTptExceptn.addActionListener(am);
-		panel.add(btnTptExceptn);
+		//panel.add(btnTptExceptn);
 		
-		JLabel label_2 = new JLabel("右键：干掉  剪切板  中的  'whitespace character'，除了换行符。");
+		JLabel label_2 = new JLabel("右键：点我，干掉  剪切板  中的  空格，除了换行符。");
 		panel.add(label_2);
 		
 		String s = "";
