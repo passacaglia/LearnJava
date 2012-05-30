@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+ 
+  <Resource name="mail/Session" auth="Container"
+            type="javax.mail.Session"
+            mail.smtp.host="smtp.YOUR_HOST.com"
+            mail.smtp.auto="true"
+            mail.transport.protocol="smtp"
+            />
+ 
+</Context>
+
