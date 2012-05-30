@@ -1,13 +1,13 @@
-From: <"=?GBK?B?1cXI/Q==?="your@address.com>
+From: =?GBK?B?1cXI/Q==?= <your@address.com>
 Reply-To: theAddress@you.want
 To: =?GBK?B?09G6w8P7s8Y=?= <tom@jerry.com>, =?GBK?B?09G6ww==?= <jerry@tom.com>
-Message-ID: <1191324.2.1338300352289.JavaMail.zxc@zhang>
+Message-ID: <1191324.2.1338338855565.JavaMail.zxc@zhang>
 Subject: =?GBK?Q?Say_hello.=C4=E3=BA=C3=C2=F0=A3=BF?=
 MIME-Version: 1.0
 Content-Type: multipart/mixed; 
-	boundary="----=_Part_0_15868511.1338300352249"
+	boundary="----=_Part_0_15868511.1338338855325"
 
-------=_Part_0_15868511.1338300352249
+------=_Part_0_15868511.1338338855325
 Content-Type: application/octet-stream; name="=?GBK?Q?=B8=BD=BC=FE1.png?="
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename="=?GBK?Q?=B8=BD=BC=FE1.png?="
@@ -665,24 +665,24 @@ R5eYrV4hjMOU8X0fdBqCgXvT/YwucHGr+aQUGuSjqc2xOcdmzOcZYuiWaitFrCBR4WoxbpB54kT7
 OkTPBqKmf17CgZ7sLSr/ILq85gGtNGNGG1CzyR+Q67manhlNnPcwyOOhB3ncVYZYIV+HYFvK3M9C
 Z8DJzDgx9TBDzKgZ53AuHWBohOpmHpslPaS+rLNyzchjbsPk8+dWQN2NduCFGbaFgrcyQ4hwbo8i
 IMu7NYeK10TYDKquAqr/H0nyVjo7b696AAAAAElFTkSuQmCC
-------=_Part_0_15868511.1338300352249
+------=_Part_0_15868511.1338338855325
 Content-Type: application/octet-stream; name=attach2.txt
 Content-Transfer-Encoding: 7bit
 Content-Disposition: attachment; filename=attach2.txt
 
 First line 1.
 First line 2.
-------=_Part_0_15868511.1338300352249
+------=_Part_0_15868511.1338338855325
 Content-Type: multipart/related; 
-	boundary="----=_Part_1_32654289.1338300352259"
+	boundary="----=_Part_1_32654289.1338338855365"
 
-------=_Part_1_32654289.1338300352259
+------=_Part_1_32654289.1338338855365
 Content-Type: text/html;charset=utf8
 Content-Transfer-Encoding: quoted-printable
 
 <font color=3Dred>Hello, this is my =E7=AC=AC=E4=B8=80=E5=B0=81=E9=82=AE=E4=
 =BB=B6</font>
-------=_Part_1_32654289.1338300352259
+------=_Part_1_32654289.1338338855365
 Content-Type: application/octet-stream
 Content-Transfer-Encoding: base64
 Content-Location: resource/chou.gif
@@ -5527,6 +5527,6 @@ NAXknM88GBJlEZ0h9WFByWC9/aH9YE4thAIhPmMAzWeNhiQitqU25ssbzV8E/SdWuJF9BtBGhkCM
 xUYfTuQxVmQybsg8kNNEBao1KiJIGocjytlVyN/6hON/FqF9qt4iCAO0YtYlqKMdUJNL1eSlQmkD
 fpK1UJ91XIIOPEGXzsa4muq4iuuX/gyhmGlu6AgOaEEaYDSlKARjMMYpzdCMDObqttzbQVVRWULr
 cPipwPojMfhoVbiRVEQNSCVqEYajsFqXrEGrMAQEADs=
-------=_Part_1_32654289.1338300352259--
+------=_Part_1_32654289.1338338855365--
 
-------=_Part_0_15868511.1338300352249--
+------=_Part_0_15868511.1338338855325--

@@ -1,5 +1,21 @@
 /**
  * Create an email with java. And then, write it into a file.(Message)
+ * 
+ * 0.0 邮件
+ * 0.0.1 Message.的content：msg.setContent(mmp);//MimeMultipart mmp = new MimeMultipart("mixed");注意"mixed"这个subtype是mixed关系。
+ * 0.0.2 mmp.addBodyPart(MimeBodyPart);
+ * 0.0.3 对上面add的MimeBodyPart进行设置。
+ * 0.0.3.1 附件类型的：setDataHandler();还要setFileName();
+ * 0.0.3.2 正文：setContent(mmp_content);
+ * 0.0.3.2.1 正文又是MiMeMulitpart的。但是关系是："related"。
+ * 0.0.3.2.2 图片要setHeader("Content-Location", "resource/chou.gif"); [这里暂时有疑问][？？？]
+ * 
+ * 
+ * 0.1 中文附件名(MimeUtility.encodeText("中文"))
+ * 0.2 友好名称(new InternetAddress("'友好名称' <your@address.com>"))	[空格][<>]
+ * 0.3 回信地址(msg.setReplyTo()) [当点击回复的时候，回信的地址可以不再是发信者的地址]
+ * 
+ * 0.4 最后：msg.saveChanges();
  */
 
 package com.az.javamail;
@@ -19,7 +35,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.internet.MimeUtility;
 
-public class Test3 {
+public class Test3CreateEmail {
 
 	/**
 	 * @param args
@@ -33,7 +49,7 @@ public class Test3 {
 		
 		//Here is the message.
 		Message msg = new MimeMessage(session);
-		msg.setFrom(new InternetAddress("\"" + MimeUtility.encodeText("张三") + "\"" + "your@address.com"));
+		msg.setFrom(new InternetAddress("\"" + MimeUtility.encodeText("张三") + "\"" + "<your@address.com>"));
 		msg.setSubject("Say hello.你好吗？");
 		msg.setReplyTo(new Address[]{new InternetAddress("theAddress@you.want")});
 		//this way to show the friendly name: "friendly username"(space then with"<>")<the email address>
