@@ -1,3 +1,4 @@
+package com.az.mysql;
 import java.sql.*;
 public class PreparedStmt {
 

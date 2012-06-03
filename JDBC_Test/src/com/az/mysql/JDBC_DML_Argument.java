@@ -1,7 +1,17 @@
+package com.az.mysql;
 import java.sql.*;
-public class JDBC_DML {
+public class JDBC_DML_Argument {
 
 	public static void main(String[] args) {
+		String name = null;
+		
+		if (1 != args.length) {
+			System.out.println("Usage: \n java JDBC_DML_Argument userName \n System exit!");
+			System.exit(-1);
+		}
+		
+		name = args[0];
+		
 		Connection conn = null;
 		Statement stmt = null;
 		try {
@@ -10,8 +20,9 @@ public class JDBC_DML {
 			conn = DriverManager.getConnection(url, "root", "amigo");
 			
 			stmt = conn.createStatement();
-			String sql = "insert into userlist values (null, 'Alex');";
+			String sql = "insert into userlist values (null, '" + name + "');";
 			stmt.executeUpdate(sql);
+System.out.println(sql);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
