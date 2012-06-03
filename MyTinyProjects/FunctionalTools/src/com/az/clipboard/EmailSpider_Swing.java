@@ -1,4 +1,4 @@
-package com.az;
+package com.az.clipboard;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.BufferedReader;

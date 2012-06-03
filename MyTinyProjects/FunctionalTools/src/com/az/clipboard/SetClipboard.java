@@ -1,4 +1,4 @@
-package com.az;
+package com.az.clipboard;
 
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
