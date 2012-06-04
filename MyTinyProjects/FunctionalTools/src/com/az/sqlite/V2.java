@@ -12,7 +12,7 @@ import java.sql.Statement;
 
 import com.az.sqlite.beans.SqliteBean;
 
-public class SepWordsThenWrite {
+public class V2 {
 
 	//strWho + ".txt"
 	String strWho = "uggx";
@@ -21,7 +21,7 @@ public class SepWordsThenWrite {
 	 * @param args
 	 */
 	public static void main(String[] args) throws Exception {
-		new SepWordsThenWrite().doIt();
+		new V2().doIt();
 	}
 	
 	private void doIt() throws Exception {

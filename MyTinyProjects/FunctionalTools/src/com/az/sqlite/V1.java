@@ -8,7 +8,7 @@ package com.az.sqlite;
 import java.sql.*;
 import java.io.*;
 
-public class WritePinyinOrUGGX {
+public class V1 {
 	
 	static String strWho = "pinyin";
 	
