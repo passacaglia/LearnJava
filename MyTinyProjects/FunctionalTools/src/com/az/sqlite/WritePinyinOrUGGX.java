@@ -1,3 +1,8 @@
+/**
+ * deprecated
+ * try SepWordsThenWrite.
+ */
+
 package com.az.sqlite;
 
 import java.sql.*;
