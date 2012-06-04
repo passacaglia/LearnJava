@@ -5,11 +5,11 @@ import java.io.*;
 
 public class WritePinyinOrUGGX {
 	
-	static String strPU = "pinyin";
+	static String strWho = "pinyin";
 	
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = null;
-		br = new BufferedReader(new FileReader("D:/Temp/" + strPU + "_.txt"));
+		br = new BufferedReader(new FileReader("D:/Temp/" + strWho + "_.txt"));
 		
 		// load the sqlite-JDBC driver using the current class loader
 	    Class.forName("org.sqlite.JDBC");
@@ -18,15 +18,15 @@ public class WritePinyinOrUGGX {
 		    
 		try {		    
 		    // create a database connection
-		    connection = DriverManager.getConnection("jdbc:sqlite:D:/Temp/" + strPU + ".sqlite");
+		    connection = DriverManager.getConnection("jdbc:sqlite:D:/Temp/" + strWho + ".sqlite");
 			  // connection = DriverManager.getConnection("jdbc:sqlite:C:/sample.db");
 			Statement statement = connection.createStatement();
 			statement.setQueryTimeout(30); // set timeout to 30 sec.
 			
-			statement.executeUpdate("drop table if exists " + strPU);
+			statement.executeUpdate("drop table if exists " + strWho);
 			statement.executeUpdate(
-					"create table " + strPU + " (id INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL, " 
-					+ strPU + " varchar, cc string)"
+					"create table " + strWho + " (id INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL, " 
+					+ strWho + " varchar, cc string)"
 					);
 			
 			String str = null;
@@ -36,7 +36,7 @@ public class WritePinyinOrUGGX {
 				s1 = str.substring(0, str.indexOf(" "));
 				s2 = str.substring(str.indexOf(" "), str.length());
 				s2 = s2.trim();
-				statement.executeUpdate("insert into " + strPU + " values(null, '" + s1 + "', '" + s2+ "')");
+				statement.executeUpdate("insert into " + strWho + " values(null, '" + s1 + "', '" + s2+ "')");
 			}
 			
 			/*ResultSet rs = statement.executeQuery("select * from " + strPU);
