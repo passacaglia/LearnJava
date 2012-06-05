@@ -31,7 +31,7 @@ public class V1 {
 			statement.executeUpdate("drop table if exists " + strWho);
 			statement.executeUpdate(
 					"create table " + strWho + " (id INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL, " 
-					+ strWho + " varchar, cc string)"
+					+ strWho + " varchar, cc varchar)"
 					);
 			
 			String str = null;

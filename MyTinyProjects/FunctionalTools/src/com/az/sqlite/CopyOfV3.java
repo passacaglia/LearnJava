@@ -33,7 +33,7 @@ public class CopyOfV3 {
 		statement.executeUpdate("drop table if exists " + strWho);
 		statement.executeUpdate(
 				"create table " + strWho + " (id INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL, " 
-				+ strWho + " varchar, cc string, " + strWhoOpp + " varchar)"
+				+ strWho + " varchar, cc varchar, " + strWhoOpp + " varchar)"
 				);
 		
 		String str = null;
