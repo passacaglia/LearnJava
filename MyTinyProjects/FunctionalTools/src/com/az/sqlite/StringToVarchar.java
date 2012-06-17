@@ -12,7 +12,7 @@ import java.sql.Statement;
 
 import com.az.sqlite.beans.SqliteBean;
 
-public class CopyOfV3 {
+public class StringToVarchar {
 
 	//strWho + ".txt"
 	String strWhoOpp = "pinyin";
@@ -22,7 +22,7 @@ public class CopyOfV3 {
 	 * @param args
 	 */
 	public static void main(String[] args) throws Exception {
-		new CopyOfV3().doIt();
+		new StringToVarchar().doIt();
 	}
 	
 	private void doIt() throws Exception {
