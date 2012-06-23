@@ -1,4 +1,4 @@
-package com.az;
+package com.az.javabean;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

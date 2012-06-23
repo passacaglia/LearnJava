@@ -17,11 +17,11 @@
 			<table width="200" border="1">
 				<tr>
 					<td>姓名</td>
-					<td><input type="text" id="name" /></td>
+					<td><input type="text" name="name" /></td>
 				</tr>
 				<tr>
 					<td>邮箱</td>
-					<td><input type="text" id="email" /></td>
+					<td><input type="text" name="email" /></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><label> <input
