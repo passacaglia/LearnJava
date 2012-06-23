@@ -6,16 +6,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Connect you and me</title>
-<style type="text/css">
-<!--
--->
-</style>
+
 </head>
 <body>
 
 	<div id="main">
 
-		<form action="" method="post">
+		<form action="index.jsp" method="post">
 
 			<table width="200" border="1">
 				<tr>
