@@ -184,7 +184,7 @@ public class DBAccess {
 		String value = null;
 		try {
 			if(null != rs) {
-				value = rs.getString("username");
+				value = rs.getString("name");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

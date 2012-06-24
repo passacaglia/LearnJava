@@ -12,7 +12,8 @@
 
 	<div id="main">
 
-		<form action="index.jsp" method="post">
+		<form action="do.it" method="post">
+			<input type="hidden" name="dowhat" value="insert"/>
 
 			<table width="200" border="1">
 				<tr>
