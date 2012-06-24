@@ -7,3 +7,5 @@ email char(45)
 );
 
 insert into contacts values (null, 'Jack', 'jack@rock.com');
+insert into contacts values (null, 'Sam', 'sam@rock.com');
+insert into contacts values (null, 'уе╨Б', 'zh@rock.com');

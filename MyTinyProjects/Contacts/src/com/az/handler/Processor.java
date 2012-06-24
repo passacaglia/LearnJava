@@ -60,9 +60,9 @@ public class Processor extends HttpServlet {
 					p.write("insert!");
 				}
 			}
-		} else if (dowhat.equals("read")) {
-			readDT();
-			p.write("read!");
+		} else if (dowhat.equals("send")) {
+			sendEmail();
+			p.write("sent!");
 		}
 		
 		
@@ -97,7 +97,7 @@ public class Processor extends HttpServlet {
 		return false;
 	}
 	
-	private boolean readDT() {
+	private boolean sendEmail() {
 		dba = new DBAccess();
 		sql = "select * from contacts"; 
 		dba.createConn();
