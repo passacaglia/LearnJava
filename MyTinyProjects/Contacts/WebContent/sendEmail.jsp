@@ -56,13 +56,13 @@ for (Map.Entry<String, String> entry : contacts.entrySet() ) {
     <tr>
       <td>主题</td>
       <td><label>
-        <input type="text" name="textfield" id="textfield" size="55"/>
+        <input type="text" name="subject" id="subject" size="55"/>
       </label></td>
     </tr>
     <tr>
       <td>正文</td>
       <td><label>
-        <textarea name="textarea" id="textarea" cols="45" rows="5"></textarea>
+        <textarea name="emailCont" id="emailCont" cols="45" rows="5"></textarea>
       </label></td>
     </tr>
     <tr>

@@ -2,6 +2,7 @@ package com.az.handler;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,7 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.az.javabean.Contacts;
 import com.az.javabean.DBAccess;
+import com.az.javabean.Email;
 
 /**
  * Servlet implementation class Processor
@@ -20,10 +23,13 @@ import com.az.javabean.DBAccess;
 public class Processor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private DBAccess dba = null;
+    private Email theEmail = null;
     private String sql = null;
     private String dowhat = null;
     private String name = null;
     private String email = null;
+    private String subject = null;
+    private String emailCont = null;
     PrintWriter p = null;
     
     /**
@@ -45,11 +51,14 @@ public class Processor extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//important for Chinese
 		request.setCharacterEncoding("utf8");
 		
 		dowhat = request.getParameter("dowhat");
 		p = response.getWriter();
 		
+		
+		//choice
 		if (dowhat.equals("insert")) {
 			name = request.getParameter("name");
 			email = request.getParameter("email");
@@ -61,15 +70,19 @@ public class Processor extends HttpServlet {
 				}
 			}
 		} else if (dowhat.equals("send")) {
-			sendEmail();
+			subject = request.getParameter("subject");
+			emailCont = request.getParameter("emailCont");
+			sendEmail(new Contacts().getContacts(), subject, emailCont);
 			p.write("sent!");
 		}
 		
 		
+		//save resource 
 		dowhat = null;
 		name = null;
 		email = null;
-		
+		subject = null;
+		emailCont = null;
 		
 	}
 
@@ -97,24 +110,9 @@ public class Processor extends HttpServlet {
 		return false;
 	}
 	
-	private boolean sendEmail() {
-		dba = new DBAccess();
-		sql = "select * from contacts"; 
-		dba.createConn();
-		dba.query(sql);
-		
-		while (dba.next()) {
-			System.out.println(dba.getName());
-			System.out.println(dba.getEmail());
-		}
-		
-		dba.closeStmt();
-		dba.closeConn();
-		
-		System.out.println("insert");
-		
-		dba = null;
-		sql = null;
+	private boolean sendEmail(HashMap<String, String> recipients, String subject, String emailCont) {
+		theEmail = new Email();
+		theEmail.send(recipients, subject, emailCont);
 		
 		return false;
 	}
