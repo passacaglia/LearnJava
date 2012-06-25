@@ -37,23 +37,23 @@ public class Email {
 			Properties props = new Properties();
 			props.setProperty("mail.smtp.auth", "true");
 			props.setProperty("mail.transport.protocol", "smtp");
-			props.setProperty("mail.host", "smtp.THE_SERVER.com");
+			props.setProperty("mail.host", "smtp.SMTP_SERVER.com");
 			props.setProperty("mail.debug", "true");
 			Session session = Session.getInstance(props, new Authenticator() {
 				protected PasswordAuthentication getPasswordAuthentication() {
 					// replace with xxx
-					return new PasswordAuthentication("YOUR_USERNAME",
+					return new PasswordAuthentication("YOUR_USER_NAME",
 							"YOUR_PASSWORD");
 				}
 			});
 
 			// Here is the message.
 			Message msg = new MimeMessage(session);
-			msg.setFrom(new InternetAddress("\"" + MimeUtility.encodeText("ÕÅÈý")
-					+ "\"" + "<your@address.com>"));
+			msg.setFrom(new InternetAddress("\"" + MimeUtility.encodeText("YOUR_NICK")
+					+ "\"" + "<YOUR_EMAIL_ADDRESS>"));
 			msg.setSubject(subject);
 			msg.setReplyTo(new Address[] { new InternetAddress(
-					"theAddress@you.want") });
+					"EMAIL_THAT_YOU_WANT_HE_TO_REPLY") });
 
 			// this way to show the friendly name: "friendly username"(space
 			// then with"<>")<the email address>
@@ -80,25 +80,26 @@ public class Email {
 
 	}
 
-	private String recipients(HashMap<String, String> recipients) {
+	public String recipients(HashMap<String, String> recipients) {
 		StringBuffer sb = new StringBuffer();
 		String s = "";
-
+		
 		try {
 			for (Map.Entry<String, String> entry : recipients.entrySet()) {
 
 				s = MimeUtility.encodeText(entry.getKey()) + " <"
-						+ entry.getValue() + ">,";
+						+ entry.getValue() + ">";
+				sb.append(", " + s);
+				//System.out.println(sb.toString());							
 			}
-			sb.append(s);
+			
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
 		
-		s = sb.toString();
-		s = s.substring(0, (s.length()-2));//remove the last ",".
+		String recp = sb.toString();
 		
-		return s;
+		return recp;
 	}
 
 }
