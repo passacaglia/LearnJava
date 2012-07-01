@@ -1,5 +1,7 @@
 package com.az;
 
-public class Snake {
+import java.awt.*;
+
+public class Snake extends Canvas{
 
 }
