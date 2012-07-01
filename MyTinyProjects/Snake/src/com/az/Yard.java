@@ -5,9 +5,9 @@ import java.awt.event.*;
 
 public class Yard extends Frame {
 
-	private static final int ROWS = 30;
-	private static final int COLS = 50;
-	private static final int CELL_SIZE = 15;
+	public static final int ROWS = 30;
+	public static final int COLS = 50;
+	public static final int CELL_SIZE = 15;
 	
 
 	public static void main(String[] args) {
