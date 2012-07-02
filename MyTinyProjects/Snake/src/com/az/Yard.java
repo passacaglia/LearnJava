@@ -9,6 +9,7 @@ public class Yard extends Frame {
 	public static final int COLS = 50;
 	public static final int CELL_SIZE = 15;
 	
+	private Snake s = new Snake(this);
 
 	public static void main(String[] args) {
 		Yard y = new Yard();
@@ -48,8 +49,10 @@ public class Yard extends Frame {
 				g.drawLine(CELL_SIZE*i, 0, CELL_SIZE*i, ROWS*CELL_SIZE);
 			}
 			
-			
 			g.setColor(c);
+			
+			//snake 
+			s.draw(g);
 		}
 	}
 	
