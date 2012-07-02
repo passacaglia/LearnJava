@@ -10,6 +10,9 @@ public class Yard extends Frame {
 	public static final int CELL_SIZE = 15;
 	
 	private Snake s = new Snake(this);
+	
+	PaintThread paintThread = new PaintThread();
+	Image offScreenImage = null;
 
 	public static void main(String[] args) {
 		Yard y = new Yard();
@@ -18,8 +21,6 @@ public class Yard extends Frame {
 
 
 	private void launch() {
-		MyCanvas c = new MyCanvas();
-		this.add(c);
 		this.setBounds(300, 50, COLS*CELL_SIZE, ROWS*CELL_SIZE);
 		this.addWindowListener(new WindowAdapter() {
 
@@ -30,32 +31,58 @@ public class Yard extends Frame {
 			
 		});
 		this.setVisible(true);
+		
+		
+		new Thread(paintThread).start();
 	}
 
 
-	
-	private class MyCanvas extends Canvas {
-		@Override
-		public void paint(Graphics g) {
-			Color c = g.getColor();
-			g.setColor(Color.BLACK);
-			
-			//横线
-			for (int i=0; i<ROWS; i++) {
-				g.drawLine(0, CELL_SIZE*i, COLS*CELL_SIZE, CELL_SIZE*i);
-			}
-			//竖线
-			for (int i=0; i<COLS; i++) {
-				g.drawLine(CELL_SIZE*i, 0, CELL_SIZE*i, ROWS*CELL_SIZE);
-			}
-			
-			g.setColor(c);
-			
-			//snake 
-			s.draw(g);
+	public void paint(Graphics g) {
+		Color c = g.getColor();
+		g.setColor(Color.BLACK);
+		
+		//横线
+		for (int i=0; i<ROWS; i++) {
+			g.drawLine(0, CELL_SIZE*i, COLS*CELL_SIZE, CELL_SIZE*i);
 		}
+		//竖线
+		for (int i=0; i<COLS; i++) {
+			g.drawLine(CELL_SIZE*i, 0, CELL_SIZE*i, ROWS*CELL_SIZE);
+		}
+		
+		g.setColor(c);
+		
+		//snake 
+		s.draw(g);
 	}
 	
+	
+	@Override
+	public void update(Graphics g) {
+		if (null == offScreenImage) {
+			offScreenImage = this.createImage(COLS*CELL_SIZE, ROWS*CELL_SIZE);
+		}
+		Graphics gOff = offScreenImage.getGraphics();
+		paint(gOff);
+		g.drawImage(offScreenImage, 0, 0, null);
+	}
+
+
+	private class PaintThread implements Runnable {
+
+		@Override
+		public void run() {
+			while(true) {
+				repaint();
+				try {
+					Thread.sleep(50);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+	}
 
 }
 
