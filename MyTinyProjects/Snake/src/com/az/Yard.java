@@ -15,7 +15,7 @@ public class Yard extends Frame {
 	PaintThread paintThread = new PaintThread();
 	Image offScreenImage = null;
 
-	private boolean flag = true;
+	private boolean gameOver = false;
 	public int score = 0;
 	
 	public static void main(String[] args) {
@@ -56,6 +56,14 @@ public class Yard extends Frame {
 			g.drawLine(CELL_SIZE*i, 0, CELL_SIZE*i, ROWS*CELL_SIZE);
 		}
 		
+		//score
+		g.setColor(Color.RED);
+		this.setTitle("Egg: " + e.getRect().x/CELL_SIZE + ", " + e.getRect().y/CELL_SIZE + " " +
+				       "      Snake: " + s.getRect().x/CELL_SIZE + ", " + s.getRect().y/CELL_SIZE);
+		g.drawString("Score :   " + score, 30, 43);
+		
+		
+		
 		
 		
 		//snake  & egg
@@ -64,11 +72,11 @@ public class Yard extends Frame {
 		s.draw(g);
 		e.draw(g);
 		
-		//
-		g.setColor(Color.RED);
-		this.setTitle("Egg: " + e.getRect().x/CELL_SIZE + ", " + e.getRect().y/CELL_SIZE + " " +
-				       "      Snake: " + s.getRect().x/CELL_SIZE + ", " + s.getRect().y/CELL_SIZE);
-		g.drawString("Score :   " + score, 30, 43);
+		
+		if (gameOver) {
+			g.drawString("GameOver", 30, 60);
+			g.drawString("GameOver", 30, 75);
+		}
 		
 		g.setColor(c);
 	}
@@ -90,7 +98,7 @@ public class Yard extends Frame {
 
 		@Override
 		public void run() {
-			while(flag) {
+			while(!gameOver) {
 				repaint();
 				try {
 					Thread.sleep(100);
@@ -114,7 +122,7 @@ public class Yard extends Frame {
 
 
 	public void stop() {
-		flag = false;
+		gameOver = true;
 	}
 	
 	
