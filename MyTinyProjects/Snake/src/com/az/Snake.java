@@ -102,16 +102,24 @@ public class Snake {
 		int key = e.getKeyCode();
 		switch(key) {
 		case KeyEvent.VK_LEFT :
-			head.dir = Dir.L;
+			if (head.dir != Dir.R)	{
+				head.dir = Dir.L;
+			}
 			break;
 		case KeyEvent.VK_UP :
-			head.dir = Dir.U;
+			if (head.dir != Dir.D) {
+				head.dir = Dir.U;
+			}
 			break;
 		case KeyEvent.VK_RIGHT :
-			head.dir = Dir.R;
+			if (head.dir != Dir.L) {
+				head.dir = Dir.R;
+			}
 			break;
 		case KeyEvent.VK_DOWN :
-			head.dir = Dir.D;
+			if (head.dir != Dir.U) {
+				head.dir = Dir.D;
+			}
 			break;
 		}
 		
