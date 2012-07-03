@@ -71,6 +71,7 @@ public class Snake {
 	private void move() {
 		addToHead();
 		deleteFromTail();
+		checkHead();
 	}
 	
 	private void deleteFromTail() {
@@ -81,6 +82,12 @@ public class Snake {
 		tail = tail.prev;
 		tail.next = null;
 		size --;
+	}
+	
+	private void checkHead() {
+		if (head.row < 0 || head.col < 2 || head.row > Yard.ROWS || head.col > Yard.COLS) {
+			y.stop();
+		}
 	}
 	
 

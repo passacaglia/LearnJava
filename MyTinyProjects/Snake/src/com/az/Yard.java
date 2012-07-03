@@ -15,6 +15,9 @@ public class Yard extends Frame {
 	PaintThread paintThread = new PaintThread();
 	Image offScreenImage = null;
 
+	private boolean flag = true;
+	
+	
 	public static void main(String[] args) {
 		Yard y = new Yard();
 		y.launch();
@@ -83,7 +86,7 @@ public class Yard extends Frame {
 
 		@Override
 		public void run() {
-			while(true) {
+			while(flag) {
 				repaint();
 				try {
 					Thread.sleep(100);
@@ -103,6 +106,11 @@ public class Yard extends Frame {
 			s.keyPressed(e);
 		}
 		
+	}
+
+
+	public void stop() {
+		flag = false;
 	}
 
 }
