@@ -33,7 +33,7 @@ public class Yard extends Frame {
 		});
 		this.setVisible(true);
 		
-		
+		//thread
 		this.addKeyListener(new KeyMonitor());
 		new Thread(paintThread).start();
 		
@@ -56,8 +56,14 @@ public class Yard extends Frame {
 		g.setColor(c);
 		
 		//snake  & egg
+		s.eat(e);
+		
 		s.draw(g);
 		e.draw(g);
+		
+		//lb
+		this.setTitle(e.getRect() + "  " + s.getRect());
+		
 	}
 	
 	

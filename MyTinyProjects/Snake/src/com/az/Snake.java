@@ -51,7 +51,7 @@ public class Snake {
 			node = new Node(head.row, head.col-1, head.dir);
 			break;
 		case U :
-			node = new Node(tail.row-1, tail.col, head.dir);
+			node = new Node(head.row-1, head.col, head.dir);
 			break;
 		case R :
 			node = new Node(head.row, head.col+1, head.dir);
@@ -143,6 +143,18 @@ public class Snake {
 	}
 
 
+	public Rectangle getRect() {
+		return new Rectangle(head.col*Yard.CELL_SIZE, head.row*Yard.CELL_SIZE, head.w, head.h);
+	}
+	
+	public void eat(Egg e) {
+		if (this.getRect().intersects(e.getRect())) {
+			e.reset();
+			addToHead();
+		}
+	}
+	
+	
 
 }
 
