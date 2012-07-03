@@ -85,7 +85,7 @@ public class Snake {
 	}
 	
 	private void checkHead() {
-		if (head.row < 0 || head.col < 2 || head.row > Yard.ROWS || head.col > Yard.COLS) {
+		if (head.row < 2 || head.col < 1 || head.row > Yard.ROWS-2 || head.col > Yard.COLS-2) {
 			y.stop();
 		}
 	}
