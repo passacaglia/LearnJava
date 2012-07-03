@@ -1,11 +1,13 @@
 package com.az;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class Snake {
 	private Node head = null;
 	private Node tail = null;
-	private int size = 0;
+	private int size = 0;//useless
+	private int c = 1;
 	
 	private Node n = new Node(20, 30, Dir.L);
 	private Yard y;
@@ -18,7 +20,7 @@ public class Snake {
 	}
 	
 	
-	public void addToTail() {
+	private void addToTail() {
 		Node node = null;
 		switch(tail.dir) {
 		case L :
@@ -42,7 +44,7 @@ public class Snake {
 	}
 	
 	
-	public void addToHead() {
+	private void addToHead() {
 		Node node = null;
 		switch(head.dir) {
 		case L :
@@ -66,6 +68,22 @@ public class Snake {
 	}
 	
 	
+	private void move() {
+		addToHead();
+		deleteFromTail();
+	}
+	
+	private void deleteFromTail() {
+		if (size == 0) {
+			return;
+		}
+		
+		tail = tail.prev;
+		tail.next = null;
+		size --;
+	}
+	
+
 	public void draw(Graphics g) {
 		if (size <= 0) {
 			return;
@@ -74,6 +92,29 @@ public class Snake {
 		for (Node n = head; n != null; n = n.next) {
 			n.draw(g);
 		}
+		
+		move();
+		
+	}
+	
+
+	public void keyPressed(KeyEvent e) {
+		int key = e.getKeyCode();
+		switch(key) {
+		case KeyEvent.VK_LEFT :
+			head.dir = Dir.L;
+			break;
+		case KeyEvent.VK_UP :
+			head.dir = Dir.U;
+			break;
+		case KeyEvent.VK_RIGHT :
+			head.dir = Dir.R;
+			break;
+		case KeyEvent.VK_DOWN :
+			head.dir = Dir.D;
+			break;
+		}
+		
 	}
 	
 	
@@ -100,6 +141,7 @@ public class Snake {
 			g.setColor(c);
 		}
 	}
+
 
 
 }

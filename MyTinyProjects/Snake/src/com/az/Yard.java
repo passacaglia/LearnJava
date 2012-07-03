@@ -33,7 +33,9 @@ public class Yard extends Frame {
 		this.setVisible(true);
 		
 		
+		this.addKeyListener(new KeyMonitor());
 		new Thread(paintThread).start();
+		
 	}
 
 
@@ -63,6 +65,7 @@ public class Yard extends Frame {
 			offScreenImage = this.createImage(COLS*CELL_SIZE, ROWS*CELL_SIZE);
 		}
 		Graphics gOff = offScreenImage.getGraphics();
+		gOff.clearRect(0, 0, COLS*CELL_SIZE, ROWS*CELL_SIZE);
 		paint(gOff);
 		g.drawImage(offScreenImage, 0, 0, null);
 	}
@@ -75,11 +78,21 @@ public class Yard extends Frame {
 			while(true) {
 				repaint();
 				try {
-					Thread.sleep(50);
+					Thread.sleep(100);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
+		}
+		
+	}
+
+
+	private class KeyMonitor extends KeyAdapter {
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			s.keyPressed(e);
 		}
 		
 	}
