@@ -89,11 +89,11 @@ public class Snake {
 			return;
 		}
 		
+		move();//先move，使鼠标控制更加灵敏
+		
 		for (Node n = head; n != null; n = n.next) {
 			n.draw(g);
 		}
-		
-		move();
 		
 	}
 	
