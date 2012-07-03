@@ -10,6 +10,7 @@ public class Yard extends Frame {
 	public static final int CELL_SIZE = 15;
 	
 	private Snake s = new Snake(this);
+	private Egg e = new Egg();
 	
 	PaintThread paintThread = new PaintThread();
 	Image offScreenImage = null;
@@ -54,8 +55,9 @@ public class Yard extends Frame {
 		
 		g.setColor(c);
 		
-		//snake 
+		//snake  & egg
 		s.draw(g);
+		e.draw(g);
 	}
 	
 	
