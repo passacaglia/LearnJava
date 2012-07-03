@@ -85,9 +85,24 @@ public class Snake {
 	}
 	
 	private void checkHead() {
+		//with the wall
 		if (head.row < 2 || head.col < 1 || head.row > Yard.ROWS-2 || head.col > Yard.COLS-2) {
 			y.stop();
 		}
+		
+		//with the body
+		for (Node n = head.next; n != null; n = n.next) {
+			if (head.row == n.row && head.col == n.col) {
+				y.stop();
+			}
+		}
+		
+		
+		/*for(Node n = head.next; n != null; n = n.next) {
+			if(head.row == n.row && head.col == n.col) {
+				y.stop();
+			}
+		}*/
 	}
 	
 
