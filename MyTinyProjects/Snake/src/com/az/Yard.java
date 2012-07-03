@@ -67,7 +67,7 @@ public class Yard extends Frame {
 		//
 		g.setColor(Color.RED);
 		this.setTitle("Egg: " + e.getRect().x/CELL_SIZE + ", " + e.getRect().y/CELL_SIZE + " " +
-				       "      Snake: " + s.getRect().x/CELL_SIZE + ", " + e.getRect().y/CELL_SIZE);
+				       "      Snake: " + s.getRect().x/CELL_SIZE + ", " + s.getRect().y/CELL_SIZE);
 		g.drawString("Score :   " + score, 30, 43);
 		
 		g.setColor(c);
