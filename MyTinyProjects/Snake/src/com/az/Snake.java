@@ -166,6 +166,7 @@ public class Snake {
 		if (this.getRect().intersects(e.getRect())) {
 			e.reset();
 			addToHead();
+			y.setScore(y.getScore() + 5);
 		}
 	}
 	

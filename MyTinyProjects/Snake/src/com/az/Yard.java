@@ -16,7 +16,7 @@ public class Yard extends Frame {
 	Image offScreenImage = null;
 
 	private boolean flag = true;
-	
+	public int score = 0;
 	
 	public static void main(String[] args) {
 		Yard y = new Yard();
@@ -56,7 +56,7 @@ public class Yard extends Frame {
 			g.drawLine(CELL_SIZE*i, 0, CELL_SIZE*i, ROWS*CELL_SIZE);
 		}
 		
-		g.setColor(c);
+		
 		
 		//snake  & egg
 		s.eat(e);
@@ -64,9 +64,12 @@ public class Yard extends Frame {
 		s.draw(g);
 		e.draw(g);
 		
-		//lb
+		//
+		g.setColor(Color.RED);
 		this.setTitle(e.getRect() + "  " + s.getRect());
+		g.drawString("Score :   " + score, 30, 43);
 		
+		g.setColor(c);
 	}
 	
 	
@@ -111,6 +114,14 @@ public class Yard extends Frame {
 
 	public void stop() {
 		flag = false;
+	}
+	
+	
+	public int getScore() {
+		return this.score;
+	}
+	public void setScore(int s) {
+		this.score = s;
 	}
 
 }
