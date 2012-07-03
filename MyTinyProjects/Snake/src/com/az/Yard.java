@@ -16,7 +16,7 @@ public class Yard extends Frame {
 	Image offScreenImage = null;
 
 	private boolean gameOver = false;
-	public int score = 0;
+	public static int score = 0;
 	
 	public static void main(String[] args) {
 		Yard y = new Yard();
@@ -74,8 +74,10 @@ public class Yard extends Frame {
 		
 		
 		if (gameOver) {
+			paintThread.pause();
+			this.score = 0;
 			g.drawString("GameOver", 30, 60);
-			g.drawString("GameOver", 30, 75);
+			g.drawString("Press F2 to restart", 30, 75);
 		}
 		
 		g.setColor(c);
@@ -96,10 +98,21 @@ public class Yard extends Frame {
 
 	private class PaintThread implements Runnable {
 
+		private boolean pause = false;
+		
 		@Override
 		public void run() {
-			while(!gameOver) {
-				repaint();
+			/**
+			 * 如果用while(!pause) {}，pause()之后，没法再restart。
+			 * 
+			 */
+			while(true) {
+				if (pause) {
+					continue;
+				} else {
+					repaint();
+				}
+				
 				try {
 					Thread.sleep(100);
 				} catch (InterruptedException e) {
@@ -108,6 +121,17 @@ public class Yard extends Frame {
 			}
 		}
 		
+		public void pause() {
+			this.pause  = true;
+		}
+		
+
+		public void restart() {
+			this.pause = false;
+			s = new Snake(Yard.this);
+			gameOver = false;
+		}
+	
 	}
 
 
@@ -115,6 +139,10 @@ public class Yard extends Frame {
 
 		@Override
 		public void keyPressed(KeyEvent e) {
+			int key = e.getKeyCode();
+			if (key == KeyEvent.VK_F2) {
+				paintThread.restart();
+			}
 			s.keyPressed(e);
 		}
 		
