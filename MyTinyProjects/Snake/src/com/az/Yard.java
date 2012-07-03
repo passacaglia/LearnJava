@@ -5,6 +5,10 @@ import java.awt.event.*;
 
 public class Yard extends Frame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static final int ROWS = 30;
 	public static final int COLS = 50;
 	public static final int CELL_SIZE = 15;
@@ -75,7 +79,7 @@ public class Yard extends Frame {
 		
 		if (gameOver) {
 			paintThread.pause();
-			this.score = 0;
+			Yard.score = 0;
 			g.drawString("GameOver", 30, 60);
 			g.drawString("Press F2 to restart", 30, 75);
 		}
@@ -155,10 +159,10 @@ public class Yard extends Frame {
 	
 	
 	public int getScore() {
-		return this.score;
+		return Yard.score;
 	}
 	public void setScore(int s) {
-		this.score = s;
+		Yard.score = s;
 	}
 
 }

@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.Random;
 
 public class Egg {
-	private static Point p = new Point();
+	private Point p = new Point();
 	private static int w = Yard.CELL_SIZE;
 	private static int h = w;
 	private static Random r = new Random();

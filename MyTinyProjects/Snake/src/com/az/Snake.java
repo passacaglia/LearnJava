@@ -7,7 +7,6 @@ public class Snake {
 	private Node head = null;
 	private Node tail = null;
 	private int size = 0;//useless
-	private int c = 1;
 	
 	private Node n = new Node(20, 30, Dir.L);
 	private Yard y;
@@ -20,7 +19,7 @@ public class Snake {
 	}
 	
 	
-	private void addToTail() {
+	/*private void addToTail() {
 		Node node = null;
 		switch(tail.dir) {
 		case L :
@@ -41,7 +40,7 @@ public class Snake {
 		node.prev = tail;
 		tail = node;
 		size ++;
-	}
+	}*/
 	
 	
 	private void addToHead() {
