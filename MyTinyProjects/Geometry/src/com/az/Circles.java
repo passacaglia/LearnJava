@@ -1,6 +1,12 @@
 /**
  * F2 to pause;
  * F3 to go on;
+ * 
+ * 
+ * setters:
+ * arcAngle
+ * alphaAngle
+ * 
  */
 
 
@@ -29,12 +35,11 @@ public class Circles extends JFrame {
 	PaintThread paintThread = new PaintThread();
 	
 	
-	
-	//
-	private static final int arcAngle = 3;//degree
-	private int arc = -1;//控制，画下一个圆。
-	private static double alphaStarts = (Math.PI/180)*15;//PI
-	private static double alpha = alphaStarts;//画下一个圆的时候，偏转的角度
+	//自由设置这些参数
+	private static final int arcAngle = 3;//degree | 小圆的每一个圆弧的角度大小。
+	private int arc = -1;//用于控制。当画笔画回起点的时候，画下一个圆。
+	private static double alphaAngle = (Math.PI/180)*15;//PI | 相邻小圆之间，小圆圆心与大圆圆心连线之间的夹角。
+	private static double alpha = alphaAngle;//画下一个圆的时候，相对最初始位置所偏转的角度。
 	
 	
 	//coordinate
@@ -82,7 +87,6 @@ public class Circles extends JFrame {
 			g.drawOval(base.x, base.y, baseLen, baseLen);
 			
 			g.setColor(Color.RED);
-//System.out.println(mp + " " + movLen);
 			d = d - arcAngle;
 			if (null == mp) {
 				nextCircle();
@@ -140,7 +144,7 @@ public class Circles extends JFrame {
 					
 					
 					arc = 0;
-					alpha += alphaStarts;//not an integer
+					alpha += alphaAngle;//not an integer
 					
 					nextCircle();
 				}
