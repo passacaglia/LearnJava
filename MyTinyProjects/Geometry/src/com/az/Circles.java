@@ -20,6 +20,10 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 public class Circles extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static final int X = 400;
 	private static final int Y = 100;
 	private static final int WW = 300;//window width
@@ -79,6 +83,13 @@ public class Circles extends JFrame {
 	
 	private class MyCanvas extends Canvas {
 		
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+
+
 		@Override
 		public void paint(Graphics g) {
 			Color c = g.getColor();
