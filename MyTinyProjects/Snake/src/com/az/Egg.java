@@ -23,6 +23,7 @@ public class Egg {
 		x = r.nextInt(Yard.COLS-1);
 		y = r.nextInt(Yard.ROWS-1);
 		while(x <1 || y*Yard.CELL_SIZE < 30) {
+			x = r.nextInt(Yard.COLS-1);
 			y = r.nextInt(Yard.ROWS-1); 
 		}
 		
