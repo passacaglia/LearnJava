@@ -22,7 +22,7 @@ public class Egg {
 	private static Point nextPos() {
 		x = r.nextInt(Yard.COLS-1);
 		y = r.nextInt(Yard.ROWS-1);
-		while(y*Yard.CELL_SIZE < 30) {
+		while(x <1 || y*Yard.CELL_SIZE < 30) {
 			y = r.nextInt(Yard.ROWS-1); 
 		}
 		

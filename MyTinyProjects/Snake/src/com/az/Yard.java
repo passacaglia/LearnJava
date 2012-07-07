@@ -133,6 +133,7 @@ public class Yard extends Frame {
 		public void restart() {
 			this.pause = false;
 			s = new Snake(Yard.this);
+			e = new Egg();
 			gameOver = false;
 		}
 	
